@@ -1,0 +1,848 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="CranePay"><meta name="theme-color" content="#090909"><title>Crane Pay</title>
+<style>
+:root{color-scheme:light;--ink:#111;--muted:#666;--line:#d8d8d8;--light:#f6f6f6;--paper:#fff}*{box-sizing:border-box}[hidden]{display:none!important}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#111;font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}header{border-bottom:2px solid #111;padding:15px 16px 12px}header .inside{max-width:900px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}h1{font-size:22px;letter-spacing:-.5px;margin:0}h2{font-size:20px;margin:0 0 8px}h3{font-size:16px;margin:0 0 12px}main{max-width:900px;margin:auto;padding:0 14px 44px}p{margin:7px 0}.sub,.tiny,.aux,.foot{color:#666;font-size:12px}.subtitle{font-size:12px;color:#666}.version{font-size:12px;font-weight:650;color:#444}.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:sticky;top:0;z-index:5;background:white;border-bottom:1px solid #ccc;margin-bottom:14px}.tab{background:white;color:#333;padding:14px 2px 11px;border:0;border-bottom:3px solid transparent;font-size:14px;font-weight:650;min-width:0;cursor:pointer}.tab[aria-selected=true]{border-color:#111;color:#111}.pane{display:none}.pane.active{display:block}.card{border:1px solid #ddd;border-radius:10px;padding:16px;margin:0 0 14px;background:#fff}.sectiontop,.split,.weekbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px}.weekbar{border:1px solid #ddd;border-radius:9px;padding:8px;display:grid;grid-template-columns:82px minmax(0,1fr) 70px;gap:4px;align-items:center}.weekbar .center{font-size:12px}.weekbar #nextWeek{justify-self:end}.weekbar button{padding:6px 3px;font-size:11px;white-space:nowrap}.weekbar .center{text-align:center;font-weight:750}.weekbar small{display:block;color:#666;font-weight:400}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field label{font-weight:650;font-size:13px}input,select,textarea{font:inherit;background:#fff;border:1px solid #9b9b9b;color:#111;border-radius:7px;padding:10px;min-height:43px;width:100%}input:focus-visible,select:focus-visible,button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid #111;outline-offset:2px}input[type=checkbox]{width:22px;height:22px;min-height:22px;accent-color:#111}.checks{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:650}.button{background:#111;border:1px solid #111;color:#fff;border-radius:7px;padding:10px 15px;font-weight:700;min-height:42px;cursor:pointer}.button.secondary,.button.danger{background:#fff;border:1px solid #777;color:#111}.button.small{min-height:33px;padding:6px 11px;font-size:12px}.button:disabled{opacity:.4}.buttons{display:flex;gap:8px;flex-wrap:wrap}.line{border-top:1px solid #ddd;margin:15px 0}.premium{padding:10px 0}.premium+.premium{border-top:1px solid #eee}.premium .detail{margin:8px 0 0 30px}.premium .grid{margin-top:6px}.callout{border:1px solid #bbb;background:#fafafa;padding:10px;border-radius:8px;margin:10px 0;font-size:12px}.preview{display:flex;justify-content:space-between;padding:10px 0;gap:12px}.preview span{color:#666}.preview strong{font-size:20px}.stat{padding:10px 12px;border:1px solid #ddd;border-radius:8px}.stat .label{font-size:12px;color:#444}.stat .num{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}.stat .aux{font-size:11px}.stat .num.bad,.bad{color:#111}.good{color:#111}.muted{color:#666}.pill{display:inline-block;border:1px solid #aaa;border-radius:10px;font-size:11px;padding:2px 6px}.empty{padding:14px;color:#666}.entry{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #ddd;padding:11px 0}.entry:last-child{border-bottom:0}.entry .amt{font-weight:750;text-align:right}.entry small{color:#666}.tablewrap{overflow:auto}.table{width:100%;min-width:430px;border-collapse:collapse}.table th,.table td{border-bottom:1px solid #ddd;padding:8px;text-align:right;font-size:12px}.table th:first-child,.table td:first-child{text-align:left}.table th{background:#f6f6f6}.subtotal{font-weight:700}.listrow{border-bottom:1px solid #ddd;padding:11px 0}.rowhead{display:flex;justify-content:space-between}.stubline{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;margin-bottom:10px}.stubline label{font-size:11px}.controlrow{display:grid;grid-template-columns:1.2fr .8fr auto;gap:8px;margin-bottom:10px}.tag{border:1px solid #ddd;padding:2px 6px;border-radius:20px;font-size:11px}.toast{display:none;position:fixed;z-index:10;bottom:18px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 20px;border-radius:7px;max-width:calc(100vw - 24px)}.week-day{display:grid;grid-template-columns:1.2fr .7fr .7fr auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid #ddd}.week-day .num{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}.week-day .day-label{font-weight:700}.week-day .tiny{font-size:11px}.week-day .running{display:none}.week-day-heading{font-size:11px;color:#555}.week-day-total{border-top:2px solid #111;border-bottom:0}.hour-audit{padding:12px;border:1px solid #bbb;border-radius:8px;margin:0 0 12px}.hour-audit .figures{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.hour-audit .strong{font-size:23px;font-weight:800}.hour-audit p{font-size:12px;color:#555}.tiny.detail{font-size:11px}.field small{color:#666}.classcompact{display:grid;grid-template-columns:1fr minmax(90px,130px);align-items:center;gap:10px}.classcompact input{min-height:38px;text-align:right}.compact-summary{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:13px 0 14px;margin-bottom:15px;border-bottom:1px solid #ddd}.compact-summary .num{font-size:29px;font-weight:800;line-height:1}.compact-summary .label{font-size:12px;color:#555}.compact-summary .right{text-align:right}details.extra{border-top:1px solid #ddd;margin-top:12px;padding-top:12px}details.extra>summary{font-weight:700;cursor:pointer;padding:5px 0 10px}details.extra[open]>summary{margin-bottom:4px}.first-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.first-grid .field label{font-size:15px}.first-grid input{font-size:18px;font-weight:700}.main-save{width:100%;margin-top:14px;font-size:16px;padding:13px}.noteshort{min-height:43px}.statrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px}.statrow .stat{padding:9px}.statrow .stat .num{font-size:22px}.tight{margin-bottom:10px}.text-right{text-align:right}#dayWarnings{display:none!important}#weekWarnings{display:none!important}#dayPreviewText{font-size:11px}#militaryStatus,#boomStatus{display:none!important}#dayOperator{min-width:0}.compact-metrics{font-variant-numeric:tabular-nums}.optional-fields{margin-top:10px}.tiny-banner{font-size:11px;color:#666;margin-top:3px}.wide{width:100%}.foot{padding:12px 0}.clock-total{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid #666;border-radius:8px;background:#161616;font-weight:700}.clock-total strong{font-size:23px;font-variant-numeric:tabular-nums}.field input[type=time]{font-size:19px;min-width:0}
+@media(max-width:640px){main{padding:0 10px 36px}.card{padding:12px}.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}.stubline{grid-template-columns:repeat(2,minmax(0,1fr))}.stubline .remove-stub{grid-column:1/-1}.controlrow{grid-template-columns:1fr 1fr}.controlrow>button{grid-column:1/-1}.week-day{font-size:13px;gap:5px}.week-day .num{font-size:13px}.tab{font-size:13px}.statrow .stat .num{font-size:20px}}
+
+/* V6.7: four-column phone-friendly estimated paycheck; keep rates visible. */
+#expectedStubContent{min-width:0;max-width:100%;overflow-wrap:break-word}
+#expectedStubContent .cp-stub-scroll{width:100%;max-width:100%;overflow-x:auto}
+#expectedStubContent .cp-stub-table{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;font-size:clamp(9px,2.3vw,12px);font-variant-numeric:tabular-nums;color:#eef4fc}
+#expectedStubContent .cp-stub-table th,#expectedStubContent .cp-stub-table td{padding:9px 3px;border-bottom:1px solid #425167;white-space:nowrap;overflow:hidden;text-overflow:clip}
+#expectedStubContent .cp-stub-table th:first-child,#expectedStubContent .cp-stub-table td:first-child{width:29%;text-align:left}
+#expectedStubContent .cp-stub-table th:nth-child(2),#expectedStubContent .cp-stub-table td:nth-child(2){width:24%;text-align:right}
+#expectedStubContent .cp-stub-table th:nth-child(3),#expectedStubContent .cp-stub-table td:nth-child(3){width:20%;text-align:right}
+#expectedStubContent .cp-stub-table th:nth-child(4),#expectedStubContent .cp-stub-table td:nth-child(4){width:27%;text-align:right}
+#expectedStubContent .cp-stub-table th{background:#202b3a;color:#fff}
+#expectedStubContent .cp-stub-subtotal{background:#dce7f3;color:#101c2a;font-weight:750}
+#expectedStubContent .cp-stub-total{background:#e0e8f1;color:#111b28;font-weight:850;border-top:2px solid #6b8199}
+@media(max-width:390px){#expectedStubContent .cp-stub-table{font-size:10px}#expectedStubContent .cp-stub-table th,#expectedStubContent .cp-stub-table td{padding:8px 2px}}
+</style>
+<style>
+:root{color-scheme:dark;--ink:#fff;--muted:#bdbdbd;--line:#555;--light:#181818;--paper:#090909}
+html,body{background:#090909!important;color:#fff!important}
+header,.tabs{background:#090909!important;color:#fff!important;border-color:#494949!important}
+.tabs{position:static!important}
+main,.pane,.card,.weekbar,.stat,.hour-audit,details,.premium,.callout{background:#0d0d0d!important;color:#fff!important;border-color:#474747!important}
+.tab{background:#090909!important;color:#bbb!important;border-color:transparent!important}
+.tab[aria-selected=true]{background:#171717!important;color:#fff!important;border-color:#fff!important}
+.button{background:#fff!important;color:#000!important;border:1px solid #fff!important}
+.button.secondary,.button.danger{background:#161616!important;color:#fff!important;border:1px solid #666!important}
+.button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:#fff!important}
+input,select,textarea{background:#161616!important;color:#fff!important;border-color:#777!important;accent-color:#fff!important}
+input[type=checkbox]{accent-color:#fff!important}
+input::placeholder,textarea::placeholder{color:#9b9b9b!important;opacity:1}
+input::-webkit-calendar-picker-indicator{filter:invert(1)}
+.sub,.tiny,.aux,.foot,.subtitle,.version,.muted,.tiny-banner,.weekbar small,.week-day-heading,.compact-summary .label,.stat .label,.stat .aux,.week-day .tiny,.field small,.entry small,.entry .amt small,.preview span,.hour-audit p,.empty,.compact-summary .right,.pill{color:#bdbdbd!important}
+.line,.entry,.premium+.premium,.listrow,.week-day,.table th,.table td,.compact-summary,details.extra{border-color:#474747!important}
+.table th{background:#191919!important;color:#fff!important}
+.pill,.tag{border-color:#555!important;color:#ddd!important}
+.toast{background:#fff!important;color:#000!important}
+.good,.bad{color:#fff!important}
+</style>
+<style>
+.clock-entry{display:flex;gap:5px;width:100%;min-width:0}
+.clock-entry input{min-width:0;flex:1 1 auto;width:1px;letter-spacing:.07em;font-size:20px!important;text-align:center;font-variant-numeric:tabular-nums}
+.clock-entry select{width:66px;flex:0 0 66px;min-width:66px;padding:10px 5px;background:#191919!important;color:#fff!important;font-size:15px}
+.time-hint{font-size:12px;color:#bbb;padding-top:5px}
+@media(max-width:370px){.clock-fields{grid-template-columns:1fr;gap:10px}.clock-entry select{width:90px;flex-basis:90px}}
+</style>
+<style>
+body.flow-mode #flowApp{display:block!important}
+body.flow-mode main>nav.tabs,body.flow-mode main>.pane,body.flow-mode main>.foot,body.flow-mode main>#storageWarning{display:none!important}
+body:not(.flow-mode) #flowApp{display:none!important}
+#flowBack{display:none}
+body:not(.flow-mode) #flowBack{display:inline-block}
+#flowApp{padding:8px 0 25px}
+#flowApp .flow-card{background:#111;border:1px solid #424242;border-radius:13px;padding:15px;margin:12px 0}
+#flowApp .flow-title{font-size:23px;letter-spacing:-.4px;font-weight:800}
+#flowApp .flow-muted{color:#bdbdbd;font-size:12px}
+#flowApp .flow-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#flowApp .flow-actions{display:flex;gap:8px;flex-wrap:wrap}
+#flowApp .flow-btn{background:white;color:black;border:1px solid white;border-radius:9px;padding:12px 17px;font-weight:800;font-size:15px;min-height:48px}
+#flowApp .flow-btn.alt{background:#1b1b1b;color:#fff;border-color:#777}
+#flowApp .flow-btn.small{padding:7px 12px;min-height:36px;font-size:13px}
+#flowApp .flow-field{display:flex;flex-direction:column;gap:5px;margin:12px 0}
+#flowApp label{font-size:14px;font-weight:700}
+#flowApp input:not([type=checkbox]),#flowApp select{background:#171717!important;border:1px solid #858585;border-radius:8px;color:white;min-height:48px;font:inherit;padding:10px}
+#flowApp input[type=checkbox]{height:23px;width:23px;flex:0 0 23px}
+#flowApp .flow-clock{display:flex;gap:7px;align-items:center}
+#flowApp .flow-clock input{width:46%;min-width:0;flex:1;text-align:center;font-size:19px;letter-spacing:.04em}
+#flowApp .flow-clock select{width:77px;flex:0 0 77px}
+#flowApp .flow-clock .flow-btn{min-height:47px;padding:8px 12px}
+#flowApp .flow-check{display:flex;align-items:center;gap:9px;padding:11px 0}
+#flowApp .flow-stage{padding:10px 0;border-bottom:1px solid #333}
+#flowApp .flow-stage:last-child{border:0}
+#flowApp .flow-strong{font-size:27px;font-weight:800;font-variant-numeric:tabular-nums}
+#flowApp .flow-note{padding:9px;color:#f1d48b;border:1px solid #776336;border-radius:7px;margin:9px 0;font-size:13px}
+#flowApp .flow-ok{color:#d2f5d1}
+#flowApp .flow-err{color:#f2b0aa}
+#flowApp .flow-two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#flowApp .flow-banner{border:1px solid #777;border-radius:10px;padding:10px 13px;margin-bottom:12px}
+#flowApp .flow-hidden{display:none!important}
+#flowApp .flow-date{width:100%}
+#flowApp .flow-menu{margin-bottom:12px}
+#flowApp button{cursor:pointer}
+@media(max-width:410px){#flowApp .flow-two{grid-template-columns:1fr}#flowApp .flow-clock select{width:70px;flex-basis:70px}}
+</style>
+<style>
+body.guided #flowApp{display:block!important}
+body.guided main>nav.tabs,body.guided main>.pane,body.guided main>.foot,body.guided main>#storageWarning{display:none!important}
+body:not(.guided) #flowApp{display:none!important}
+body.guided #flowBack{display:none!important}
+#flowBack{display:inline-block}
+#flowApp .ghead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0}
+#flowApp .ghead>strong{font-size:23px}
+#flowApp .gcard{padding:14px;border:1px solid #555;border-radius:12px;background:#111;margin:12px 0}
+#flowApp .gcard h3{font-size:17px;margin:0 0 12px}
+#flowApp label{font-size:14px;display:block;font-weight:650}
+#flowApp label input:not([type=checkbox]),#flowApp label select,#flowApp .grange select{background:#181818!important;color:white!important;border:1px solid #777;border-radius:8px;padding:9px;width:100%;min-width:0;min-height:44px;margin:5px 0 9px}
+#flowApp .gline{padding:10px 0;border-bottom:1px solid #333}
+#flowApp .gclock{display:flex;align-items:center;gap:7px;margin-top:6px}
+#flowApp .gclock input{background:#191919;border:1px solid #777;border-radius:8px;padding:8px;width:1px;min-width:0;flex:1;text-align:center;font-size:19px;height:47px}
+#flowApp .gclock select{background:#191919;color:#fff;border:1px solid #777;border-radius:8px;padding:8px;flex:0 0 70px;max-width:70px;min-width:70px;height:47px}
+#flowApp .gbutton{background:#fff;color:#000;border:1px solid #fff;border-radius:8px;padding:10px 13px;font-size:14px;font-weight:750;min-height:43px;margin:3px}
+#flowApp .gbutton.alt{background:#1b1b1b;border-color:#777;color:#fff}
+#flowApp .gbutton.primary{width:100%;font-size:16px;min-height:54px}
+#flowApp .gmuted,#flowApp #guideStatus{font-size:12px;color:#bdbdbd;padding:7px 0}
+#flowApp .gtwo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#flowApp .gcheck{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #292929}
+#flowApp .gcheck input{width:22px;height:22px;min-height:22px;flex:0 0 22px}
+#flowApp .grange{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}
+#flowApp .grange span{grid-column:1/-1;font-weight:650}
+@media(max-width:380px){#flowApp .gtwo{grid-template-columns:1fr}}
+#flowApp .gholiday{display:flex;flex-direction:column;gap:5px;border:1px solid #dbbd55;border-radius:10px;background:#29240f;color:#fff2bb;padding:13px 12px;margin:0 0 13px;text-align:center}
+#flowApp .gholiday strong{font-size:15px;font-weight:800;letter-spacing:.3px;line-height:1.3}
+#flowApp .gholiday span{font-size:12px;color:#f2e3ad;line-height:1.35}
+#flowApp .gdaynav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:8px 0 12px;width:100%}
+#flowApp .gdaynav .gbutton{width:100%;min-width:0;max-width:100%;font-size:14px;padding:10px 3px;margin:0;white-space:nowrap;overflow:hidden;text-align:center;min-height:48px;letter-spacing:0}
+#flowApp .gsaved{display:flex;gap:8px;align-items:center;justify-content:space-between;border-top:1px solid #333;padding:7px 0}
+#flowApp .gsaved [data-open]{flex:1;text-align:left;margin:0}
+#flowApp .gsaved .gbutton.danger{background:#281818;color:#ffdad4;border:1px solid #996b6b;margin:0;font-size:13px}
+
+/* Crane Pay V5 visual system: appearance only. Time and contract math unchanged. */
+:root{--cp-bg:#0b1120;--cp-panel:#131e30;--cp-panel2:#18263b;--cp-teal:#37dec5;--cp-blue:#6badff;--cp-text:#f4f9ff;--cp-sub:#aec1d9;--cp-line:#334761}
+html,body{background:var(--cp-bg)!important;color:var(--cp-text)!important}
+header{background:linear-gradient(112deg,#122439 0%,#0c1728 68%,#102b36 100%)!important;border-bottom:1px solid #275364!important;box-shadow:0 8px 24px #030a164d;padding:15px 14px 13px}
+header .inside.cp-header{max-width:900px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cp-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.cp-mark{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(140deg,#42ddce,#348cfa);color:#081a2d;font-size:14px;font-weight:900;letter-spacing:-.5px;box-shadow:0 3px 14px #2bd8d642}
+.cp-brandtext{min-width:0}
+.cp-brandtext h1{font-size:21px;line-height:1.1;color:#fff;letter-spacing:-.5px}
+.cp-subtitle{display:block;font-size:9px;letter-spacing:1.5px;font-weight:800;color:#a6c1d6;margin-top:4px;white-space:nowrap}
+.cp-headeractions{display:flex;gap:7px;align-items:center;flex-shrink:0}
+.cp-version{display:inline-flex;align-items:center;justify-content:center;border:1px solid #398b96;background:#163c49;color:#70f0d9;border-radius:999px;font-weight:900;font-size:13px;padding:7px 10px;min-width:56px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#flowBack.button{min-height:35px;padding:6px 9px;font-size:12px;background:#1a3148!important;border-color:#3b637a!important}
+@media(max-width:365px){.cp-mark{width:34px;height:34px;flex-basis:34px}.cp-brandtext h1{font-size:18px}.cp-subtitle{font-size:8px;letter-spacing:1px}.cp-headeractions{gap:5px}.cp-version{padding:6px 7px;font-size:12px;min-width:50px}}
+main{max-width:900px}
+#flowApp{padding-top:12px}
+#flowApp .ghead{margin:3px 0 12px;gap:8px;align-items:center}
+#flowApp .gpagehead{display:flex;flex-direction:column;gap:2px;min-width:0}
+#flowApp .gpagehead strong{font-size:25px;line-height:1.13;letter-spacing:-.55px}
+#flowApp .gpagehead span{font-size:12px;color:var(--cp-sub)}
+#flowApp .gbutton.gweek{font-size:12px;padding:8px;min-height:40px;flex-shrink:0;margin:0;white-space:nowrap}
+#flowApp .gcard{border:1px solid var(--cp-line);border-radius:16px;background:linear-gradient(150deg,var(--cp-panel),#111b2b);padding:15px;margin:12px 0;box-shadow:0 6px 15px #0207172b}
+#flowApp .gcard h3{font-size:17px;letter-spacing:-.2px;color:#f0f7ff;display:flex;align-items:center;gap:9px;margin:0 0 11px}
+#flowApp .gsectionicon{border-radius:8px;min-width:29px;height:28px;display:inline-grid;place-items:center;background:#213e58;border:1px solid #3b6476;color:var(--cp-teal);font-size:11px;letter-spacing:.2px}
+#flowApp .gsectionhint{font-size:12px;color:var(--cp-sub);margin:-2px 0 8px}
+#flowApp .gsummary{border:1px solid #287c86;border-radius:17px;background:linear-gradient(125deg,#103744 0%,#14364f 52%,#1a2944 100%);padding:15px 15px 13px;box-shadow:0 7px 20px #07283848}
+#flowApp .gsummaryhead{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:11px;font-weight:850;letter-spacing:1.3px;color:#9cded9}
+#flowApp .gstate{letter-spacing:.4px;border:1px solid #388f94;background:#14434b;border-radius:20px;padding:4px 9px;font-size:10px;color:#8dffdf;white-space:nowrap}
+#flowApp .gmetrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+#flowApp .gmetric{display:flex;flex-direction:column;gap:3px}
+#flowApp .gmetric+.gmetric{border-left:1px solid #3c6778;padding-left:14px}
+#flowApp .gmetric strong{font-size:29px;line-height:1.2;letter-spacing:-.8px;font-variant-numeric:tabular-nums;color:#fff}
+#flowApp .gmetric strong small{font-size:15px;color:#a3c9d8;font-weight:500}
+#flowApp .gmetric span{font-size:11px;color:#c6d8e6}
+#flowApp .gtrack{border-radius:99px;background:#214155;height:7px;overflow:hidden}
+#flowApp .gfill{background:linear-gradient(90deg,#27bfba,#80f3bc);height:100%;border-radius:99px;transition:width .15s ease}
+#flowApp .gsummaryfoot{color:#c0d5e3;font-size:11px;margin-top:9px}
+#flowApp #guideStatus{display:inline-flex;align-items:center;font-size:11px;color:#90e9bc!important;border-radius:100px;background:#173e35;padding:6px 10px;white-space:nowrap}
+#flowApp .gcard .ghead>b{font-size:16px;letter-spacing:.15px}
+#flowApp label{color:#dceafa;font-weight:650}
+#flowApp label input:not([type=checkbox]),#flowApp label select,#flowApp .grange select,
+#flowApp .gclock input,#flowApp .gclock select{background:#1a2b40!important;color:#fff!important;border:1px solid #4a627d!important;border-radius:10px}
+#flowApp input::placeholder{color:#9baebf!important}
+#flowApp input:focus-visible,#flowApp select:focus-visible{outline:2px solid var(--cp-teal)!important;outline-offset:1px}
+#flowApp input[type=checkbox]{accent-color:var(--cp-teal)!important}
+#flowApp .gdaynav{gap:7px;margin:6px 0 13px}
+#flowApp .gdaynav .gbutton{border:1px solid #496987;color:#d4ebfc;background:#21354b;min-height:43px;font-size:13px;padding:8px 2px}
+#flowApp .gdaynav #gCurrent{border-color:#408e90;color:#9efae3;background:#18454a}
+#flowApp .gbutton{border-radius:10px;margin:2px;border-color:#445d77;background:#1e3047;color:#f1f8ff;font-weight:800}
+#flowApp .gbutton.alt{background:#1d3047;color:#e2f2ff;border-color:#45627b}
+#flowApp .gbutton.primary{color:#07262b;background:linear-gradient(100deg,#42e0cb,#5bf2b5);border:1px solid #52e4cb;box-shadow:0 4px 13px #1d9f9c34;font-weight:900;letter-spacing:.4px}
+#flowApp .gbutton.gnow{background:#245d8e;border:1px solid #458cca;color:#f5fbff;font-size:13px;min-width:58px;padding:9px 6px;min-height:47px;margin:0}
+#flowApp .gline{border-bottom:1px solid #2b4058;padding:11px 0 12px}
+#flowApp .gline:last-child{border-bottom:0;padding-bottom:0}
+#flowApp .gstep{display:flex;gap:9px;align-items:center}
+#flowApp .gstep label{flex:1}
+#flowApp .gstepnum{font-weight:900;color:#9bbbd8;background:#25374d;border:1px solid #405772;border-radius:7px;font-size:11px;line-height:23px;text-align:center;width:27px;height:25px;flex:0 0 27px}
+#flowApp .gline.recorded .gstepnum{background:#18483c;color:#8ff6c7;border-color:#327966}
+#flowApp .gstepcheck{color:var(--cp-teal);font-weight:900;font-size:17px;min-width:15px}
+#flowApp .gclock{margin-top:9px}
+#flowApp .gclock input{height:47px;min-height:47px;text-align:center;font-weight:750;letter-spacing:.5px}
+#flowApp .gclock select{height:47px;flex:0 0 69px;max-width:69px;min-width:69px;padding:7px 5px;font-size:13px}
+#flowApp .gcheck{border-bottom:1px solid #2a3e54;padding:13px 0}
+#flowApp .grange{margin:12px 0}
+#flowApp .gholiday{background:linear-gradient(115deg,#584020,#3d2e18);border-color:#b68c4e;color:#ffe8b1}
+#flowApp .gholiday strong{color:#ffe8a4}
+#flowApp .gmuted{color:#afc2d8;font-size:12px}
+#flowApp .gsavecard{border-color:#327a77;background:linear-gradient(130deg,#172f36,#142539)}
+#flowApp .gsaved{border-top:1px solid #294258;gap:8px}
+#flowApp .gsaved [data-open]{min-width:0;margin:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+#flowApp .gsaved .gbutton.danger{background:#3f2731;color:#ffb6b9;border:1px solid #945d66;padding:9px 10px}
+#flowApp .gbackuparea{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border-top:1px solid #294258;margin-top:14px;padding-top:14px}
+#flowApp .gbackuparea button{margin:0;border-color:#5198a4!important;color:#9de8e5!important;background:#193644!important}
+#flowApp .gbackuparea span{color:#aec2d7;font-size:11px}
+#flowApp .gtwo{gap:9px}
+@media(max-width:380px){#flowApp .gpagehead strong{font-size:22px}#flowApp .gpagehead span{font-size:11px}#flowApp .gbutton.gweek{padding:7px 5px;font-size:11px}}
+/* Week and Pay Stub share the same visual identity; their math and structure stay untouched. */
+.tab[aria-selected=true]{border-bottom-color:var(--cp-teal)!important;color:#7cead4!important;background:#172737!important}
+.tab{color:#b9ccdc!important;background:#0f1a2a!important}
+.pane .card,.pane .stat,.pane .weekbar,.pane .hour-audit{background:#131e30!important;border-color:#344961!important}
+.pane .button{background:#37dec5!important;border-color:#37dec5!important;color:#07242c!important}
+.pane .button.secondary,.pane .button.danger{background:#24394f!important;border-color:#4a657f!important;color:#dcefff!important}
+
+
+
+/* V5.5: per-day pay-category hours under the hours column */
+#pane-week .daily-pay-table .pay-day-hours{font-weight:900!important;color:#b8fbe5!important;text-align:right!important;white-space:nowrap}
+#pane-week .daily-pay-table tr.pay-day-total .pay-day-hours{color:#c5ffeb!important;font-size:clamp(11px,2.9vw,14px)}
+#pane-week .daily-pay-table tr.pay-week-wages .pay-day-hours{color:#e0f9fa!important}
+@media(max-width:380px){#pane-week .daily-pay-table tr.pay-day-total td{padding:12px 3px!important}}
+/* V5.2: visible daily separators and contract subsistence */
+#pane-week .daily-pay-table tr.pay-day-total td{font-weight:900;color:#fff;background:#20384b!important;border-top:2px solid #55b9ba!important;border-bottom:4px solid #6d9dbb!important;padding:12px 6px!important}
+#pane-week .daily-pay-table tr.pay-day-total td:last-child{text-align:right;color:#9ef1d7!important}
+#pane-week .daily-pay-table tr.pay-subline td{color:#f3d6a1!important;background:#332d27!important}
+#pane-week .daily-pay-table tr.pay-week-sub td{color:#edcb90!important}
+#pane-week .daily-pay-table tr.pay-all-total td{border-top:2px solid #56b8b8!important;background:#153d44!important;color:#bbffe7!important;font-weight:900!important}
+#flowApp .gsubarea{border-top:2px solid #396c78;background:#192b3d;border-radius:10px;padding:13px 12px 12px;margin-top:15px}
+#flowApp .gsubarea label{color:#aaf6e4;font-weight:850;margin-bottom:6px}
+#flowApp .gsubarea select{width:100%;border-radius:10px;min-height:48px;padding:10px;color:#fff!important;background:#1d394f!important;border:1px solid #4c8791!important}
+#flowApp .gsubhint{color:#b9cbe0;font-size:11px;margin-top:8px;line-height:1.5}
+
+/* V5.1 - day-by-day earnings readability */
+#pane-week .week-pay-heading{margin:16px 0 8px}
+#pane-week .week-pay-heading h3{margin:0 0 3px;font-size:15px;color:#dff6fb}
+#pane-week .week-pay-heading p{margin:0;color:#abc0d8;font-size:11px}
+#pane-week .daily-pay-wrap{width:100%;max-width:100%;overflow-x:auto}
+#pane-week .daily-pay-table{width:100%;min-width:0;border-collapse:collapse}
+#pane-week .daily-pay-table th,#pane-week .daily-pay-table td{padding:10px 5px;white-space:nowrap;font-size:clamp(10px,2.7vw,13px);font-variant-numeric:tabular-nums}
+#pane-week .daily-pay-table .pay-date{font-weight:800;color:#89e9de;text-align:left}
+#pane-week .daily-pay-table th:first-child{text-align:left}
+#pane-week .daily-pay-table .pay-type{display:inline-flex;align-items:center;padding:3px 5px;border-radius:5px;background:#233b54;border:1px solid #3c607b;font-weight:850;color:#c9e5fd;font-size:10px}
+#pane-week .daily-pay-table .pay-type-ot{color:#9eddfc;border-color:#3b7698}
+#pane-week .daily-pay-table .pay-type-dt{color:#9af6d6;border-color:#369076;background:#163a38}
+#pane-week .daily-pay-table .pay-type-tt{color:#ffe2a2;border-color:#a37b37;background:#3a3020}
+#pane-week .daily-pay-table tr[data-paydate]{background:#132437}
+#pane-week .daily-pay-table tr[data-paydate]:nth-child(even){background:#162b40}
+#pane-week .daily-pay-table .subtotal{background:#183244;color:#fff}
+#pane-week .paycheck-metrics .stat .num{overflow-wrap:anywhere;white-space:normal;line-height:1.12}
+@media(max-width:500px){
+ #pane-week .paycheck-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #pane-week .paycheck-metrics .stat:first-child{grid-column:1/-1}
+ #pane-week .paycheck-metrics .stat .num{font-size:21px}
+ #pane-week .daily-pay-table th,#pane-week .daily-pay-table td{padding:9px 3px}
+ #pane-week .daily-pay-table .pay-type{font-size:10px;padding:3px}
+}
+
+
+/* Shareable weekly payroll report action */
+#pane-week .report-action{padding:12px 10px 13px;margin:4px 0 14px;border:1px solid #3a848a;border-radius:12px;background:linear-gradient(130deg,#123540,#17304b)}
+#pane-week .email-report-button{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:51px;font-size:15px;font-weight:900;background:#48e2c9!important;border:1px solid #72ecd9!important;color:#06232b!important;border-radius:10px}
+#pane-week .report-ico{font-size:19px;line-height:1}
+#pane-week .report-action p{font-size:11px;color:#b9d4e5;line-height:1.4;margin:7px 2px 0}
+
+
+#flowApp .gcompactdata{display:flex;gap:12px;align-items:baseline;margin-top:9px}
+#flowApp .gcompactdata strong{font-size:27px;line-height:1.15;font-variant-numeric:tabular-nums;color:#fff}
+#flowApp .gcompactdata span{color:#c6dfeb;font-size:12px}
+/* V5.4 — optional two-yard crane pickup itinerary and compact shift overview */
+#flowApp .compact-summary-card{padding:12px 15px;background:linear-gradient(125deg,#123642 0%,#14283d 100%)}
+#flowApp .compact-summary-card .gmetrics{margin:9px 0 3px;gap:10px}
+#flowApp .compact-summary-card .gmetric strong{font-size:26px}
+#flowApp .compact-summary-card .gmetric span{font-size:11px}
+#flowApp .compact-summary-card .gsummaryhead{font-size:11px}
+#flowApp .groutebox{border:1px solid #3b728d;border-radius:12px;margin:12px 0 8px;padding:11px 12px;background:#172e42}
+#flowApp .grootetoggle{margin:0;border-bottom:none;padding:3px 0;align-items:center;gap:12px}
+#flowApp .grootetoggle input{accent-color:#4aedd0!important;width:24px;height:24px}
+#flowApp .grootetoggle span{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+#flowApp .grootetoggle strong{font-size:14px;color:#abfff0;font-weight:900}
+#flowApp .grootetoggle small{font-size:11px;line-height:1.5;color:#b2cbe0;font-weight:400}
+#flowApp .groutefields{padding:12px 0 0;gap:8px}
+#flowApp .groutefields label{font-size:12px}
+#flowApp .grouteguide{font-size:11px;text-align:center;color:#c2ede6;border-top:1px solid #39647e;padding:12px 0 4px;line-height:1.5}
+#flowApp .gline.travel-stop{background:#1c3448;border-radius:11px;padding:12px 9px;margin-top:8px;border:1px solid #32647c}
+#flowApp .gline.travel-stop .gstepnum{background:#17536b;color:#acf2ff;border-color:#327891}
+#flowApp .gline.travel-stop.recorded .gstepnum{background:#174e44;color:#95ffdf;border-color:#448c71}
+@media(max-width:400px){#flowApp .groutefields{grid-template-columns:1fr}}
+
+/* Prominent finished-day confirmation; pending days retain the compact hours preview */
+#flowApp .compact-summary-card.is-complete{border-color:#369f95;background:linear-gradient(125deg,#13383b 0%,#152c3d 100%)}
+#flowApp .gcomplete-banner{margin-top:11px;display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:12px;row-gap:3px;align-items:center;padding:13px 12px;border:2px solid #54cdb9;border-radius:13px;background:linear-gradient(115deg,#123e42 0%,#153448 100%);box-shadow:inset 0 1px 0 #ffffff19,0 3px 11px #062a2980}
+#flowApp .gcomplete-icon{grid-row:1 / span 2;display:flex;align-items:center;justify-content:center;background:#2cc7aa;color:#0d2831;border-radius:50%;font-weight:1000;font-size:26px;width:42px;height:42px}
+#flowApp .gcomplete-message{font-weight:1000;font-size:clamp(15px,4.1vw,21px);line-height:1.2;letter-spacing:.5px;color:#e5fff4}
+#flowApp .gcomplete-banner strong{font-size:23px;line-height:1.2;color:#8cf1d4;font-variant-numeric:tabular-nums}
+/* V5.6 crew roles — specific pay entitlement per timecard */
+#flowApp .gcrewbox{border:1px solid #3a7d88;background:linear-gradient(120deg,#173642,#1b2d46);border-radius:12px;padding:12px;margin:9px 0 16px}
+#flowApp .gcrewbox label{display:block;font-size:14px;font-weight:900;color:#abf6e7;margin-bottom:7px}
+#flowApp .gcrewbox select{display:block;width:100%;min-height:48px;border:1px solid #468b9c!important;background:#203e53!important;color:#fff!important;border-radius:9px;font-weight:850;padding:9px 11px}
+#flowApp .gcrewnote{font-size:11px;color:#c3dbe5;margin:8px 0 0;line-height:1.5}
+</style><style>.gexoverlay{position:fixed;inset:0;z-index:10000;background:#000b;overflow:auto;padding:12px}.gexpanel{max-width:680px;margin:0 auto 30px;background:#101010;color:#fff;border:1px solid #777;border-radius:14px;padding:18px}.gexpanel h2{margin:16px 0 5px}.gexpanel h3{margin:20px 0 9px}.gextotal{padding:15px;background:#243126;border-radius:9px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.gexrow{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #444;padding:12px 0}.gexrow small{display:block;color:#bbb;margin-top:4px}.gexright{text-align:right;min-width:125px}.gexright b,.gexright span,.gexright strong{display:block}.gexright b{font-size:12px}.gexright span{color:#bbb;font-size:12px}.gexstat{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #444}.gexnote{font-size:12px;color:#bbb}
+/* V7.2 selectable appearance themes; original blue remains the default. */
+/* CTS-V inspired high-saturation badge palette: chrome, gold, red, blue, black. */
+body[data-cp-theme="ctsv"]{--cp-bg:#05070b;--cp-panel:#101722;--cp-panel2:#172131;--cp-teal:#00bfff;--cp-blue:#35aaff;--cp-text:#fff;--cp-sub:#c7d5e6;--cp-line:#65768c;--cp-accent:#ffe04d;--cp-accent-dim:#382c17}
+body[data-cp-theme="ctsv"] .cp-mark{background:linear-gradient(135deg,#f9fafb 0%,#9eaaba 35%,#fff 52%,#65758b 100%)!important;color:#131925!important;border:2px solid #e6efff!important;font-style:italic;font-weight:1000}
+body[data-cp-theme="ctsv"] .cp-brandtext h1{background:linear-gradient(95deg,#fff 0%,#f9c927 29%,#ff344b 52%,#28b4ff 80%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+body[data-cp-theme="ctsv"] header{border-bottom:4px solid transparent!important;border-image:linear-gradient(90deg,#ffdf36 0% 25%,#f52f42 25% 50%,#161b22 50% 65%,#27aaff 65% 100%) 1!important}
+body[data-cp-theme="ctsv"] #gLiveCard{border:2px solid #f5c94a!important;background:linear-gradient(135deg,#121b2b,#1b2431 65%,#112f45)!important;box-shadow:0 0 18px #259dff35}
+body[data-cp-theme="ctsv"] #gLiveMoney{color:#fff!important;text-shadow:0 0 14px #2bafff88}
+body[data-cp-theme="ctsv"] #flowApp .gsectionicon{background:linear-gradient(130deg,#ffd23e,#fc4055,#28baff)!important;color:#070b12!important}
+body[data-cp-theme="ctsv"] .cp-theme-button{border-color:#e4b83e;background:linear-gradient(110deg,#26221a,#171f2b);color:#fff}
+body[data-cp-theme="ctsv"] .cp-version{color:#ffdb43!important;border-color:#ffdb43!important}
+
+body[data-cp-theme="mono"]{--cp-bg:#050505;--cp-panel:#171717;--cp-panel2:#202020;--cp-teal:#f0f0f0;--cp-blue:#ccc;--cp-text:#fff;--cp-sub:#bbb;--cp-line:#555;--cp-accent:#f0f0f0;--cp-accent-dim:#242424}
+body[data-cp-theme="green"]{--cp-bg:#030b06;--cp-panel:#0c1b12;--cp-panel2:#14271a;--cp-teal:#55ed88;--cp-blue:#55ed88;--cp-text:#f3fff6;--cp-sub:#b5d7bd;--cp-line:#315b40;--cp-accent:#55ed88;--cp-accent-dim:#103b21}
+body[data-cp-theme="red"]{--cp-bg:#100507;--cp-panel:#231015;--cp-panel2:#2d1820;--cp-teal:#ff6b73;--cp-blue:#ff878c;--cp-text:#fff5f5;--cp-sub:#e3b9bd;--cp-line:#754047;--cp-accent:#ff6b73;--cp-accent-dim:#501d26}
+body[data-cp-theme]:not([data-cp-theme="blue"]) header{background:var(--cp-bg)!important;border-bottom-color:var(--cp-line)!important}
+body[data-cp-theme]:not([data-cp-theme="blue"]) .cp-mark{background:var(--cp-accent);color:#080808;box-shadow:none}
+body[data-cp-theme]:not([data-cp-theme="blue"]) .cp-version{background:var(--cp-accent-dim);border-color:var(--cp-accent);color:var(--cp-accent)}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gsummary{background:var(--cp-panel2);border-color:var(--cp-line)}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gsummaryhead{color:var(--cp-accent)}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gstate{background:var(--cp-accent-dim);border-color:var(--cp-accent);color:var(--cp-accent)}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gcard{background:var(--cp-panel);border-color:var(--cp-line)}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #gLiveCard{background:var(--cp-panel2)!important;border-color:var(--cp-accent)!important}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #gLiveCard>div:first-child{color:var(--cp-accent)!important}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gbutton,#flowApp .gbutton.alt,#flowApp .gdaynav .gbutton{background:var(--cp-panel2);border-color:var(--cp-line);color:var(--cp-text)}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gdaynav #gCurrent{background:var(--cp-accent-dim);border-color:var(--cp-accent);color:var(--cp-accent)}
+body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp label input:not([type=checkbox]),body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp label select,body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gclock input,body[data-cp-theme]:not([data-cp-theme="blue"]) #flowApp .gclock select{background:var(--cp-panel2)!important;border-color:var(--cp-line)!important;color:var(--cp-text)!important}
+.cp-theme-wrap{position:relative}
+.cp-theme-button{border:1px solid var(--cp-line);border-radius:10px;background:var(--cp-panel2);color:var(--cp-text);font-size:12px;font-weight:800;padding:8px 9px;cursor:pointer}
+.cp-theme-menu{position:absolute;z-index:50;right:0;top:calc(100% + 7px);width:180px;border:1px solid var(--cp-line);border-radius:12px;background:var(--cp-panel);padding:10px;box-shadow:0 10px 30px #0009}
+.cp-theme-menu label{display:block;color:var(--cp-text);font-size:12px;font-weight:800;margin-bottom:7px}
+.cp-theme-menu select{background:var(--cp-panel2);color:var(--cp-text);border:1px solid var(--cp-line);min-height:40px;padding:6px}
+@media(max-width:370px){.cp-theme-button{padding:7px 5px;font-size:11px}.cp-headeractions{gap:3px}}
+</style></head><body>
+<header><div class="inside cp-header"><div class="cp-brand"><span class="cp-mark" aria-hidden="true">CP</span><div class="cp-brandtext"><h1>Crane Pay</h1><span class="cp-subtitle">PAYCHECK CHECKER</span></div></div><div class="cp-headeractions"><div class="cp-theme-wrap"><button type="button" id="cpThemeButton" class="cp-theme-button" aria-expanded="false" aria-controls="cpThemeMenu">⚙ Theme</button><div id="cpThemeMenu" class="cp-theme-menu" hidden><label for="cpThemeSelect">Color theme</label><select id="cpThemeSelect" aria-label="Color theme"><option value="blue">Original Blue</option><option value="mono">Black &amp; White</option><option value="green">Black &amp; Green</option><option value="red">Black &amp; Red</option><option value="ctsv">CTS-V · V-Series Colors</option></select></div></div><span class="cp-version" id="appVersion" aria-label="App version 7.9">V7.9</span><button type="button" id="flowBack" class="button secondary small">Workday</button></div></div></header>
+<script>
+(function(){
+ var key='cranepay-ui-theme-v1';
+ var allowed={blue:true,mono:true,green:true,red:true,ctsv:true};
+ function apply(value){var theme=allowed[value]?value:'blue';document.body.setAttribute('data-cp-theme',theme);document.getElementById('cpThemeSelect').value=theme;try{localStorage.setItem(key,theme)}catch(e){}}
+ var saved='blue';try{saved=localStorage.getItem(key)||'blue'}catch(e){}
+ apply(saved);
+ var button=document.getElementById('cpThemeButton'),menu=document.getElementById('cpThemeMenu');
+ button.addEventListener('click',function(){menu.hidden=!menu.hidden;button.setAttribute('aria-expanded',String(!menu.hidden))});
+ document.getElementById('cpThemeSelect').addEventListener('change',function(e){apply(e.target.value);menu.hidden=true;button.setAttribute('aria-expanded','false')});
+ document.addEventListener('click',function(e){if(!e.target.closest('.cp-theme-wrap')){menu.hidden=true;button.setAttribute('aria-expanded','false')}});
+})();
+</script><main>
+<section id="flowApp" style="display:none"></section>
+<nav class="tabs" aria-label="App screens">
+<button class="tab" data-tab="day" aria-selected="true">Workday</button><button class="tab" data-tab="week" aria-selected="false">Week</button><button class="tab" data-tab="stub" aria-selected="false">Pay Stub</button><button class="tab" data-tab="rates" aria-selected="false">Settings</button>
+</nav>
+<div class="callout" id="storageWarning" hidden>Browser storage unavailable. Use Backup in Settings.</div>
+<section class="pane active" id="pane-day">
+<div class="compact-summary"><div><div class="label">THIS PAY WEEK</div><div class="num" id="miniHours">0</div><div class="tiny-banner" id="miniWeek"></div></div><div class="right"><div class="label">HOURS ON STUB</div><div class="num" id="miniPaid">—</div><div class="tiny-banner" id="miniAudit"></div></div><span hidden id="miniDays"></span></div>
+<div class="sectiontop tight"><h2 id="dayTitle">Add workday</h2><button class="button secondary small" id="newDay" type="button">New</button></div>
+<form id="dayForm" class="card">
+<div class="field"><label for="dayDate">Date</label><input id="dayDate" type="date" required></div>
+<div class="grid clock-fields" style="margin-top:12px">
+<div class="field"><label for="startTime">Clock in</label><div class="clock-entry"><input id="startTime" type="text" inputmode="numeric" maxlength="4" autocomplete="off" spellcheck="false" placeholder="0500" aria-label="Clock in, 4 digits, e.g. 0500"><select id="startPeriod" aria-label="Clock in AM or PM"><option value="AM">AM</option><option value="PM">PM</option></select></div></div>
+<div class="field"><label for="endTime">Clock out</label><div class="clock-entry"><input id="endTime" type="text" inputmode="numeric" maxlength="4" autocomplete="off" spellcheck="false" placeholder="0500" aria-label="Clock out, 4 digits, e.g. 0500"><select id="endPeriod" aria-label="Clock out AM or PM"><option value="AM">AM</option><option value="PM" selected>PM</option></select></div></div>
+</div><div class="time-hint">Type 4 digits (0500 = 5:00). No clock dial.</div>
+<label class="checks" style="margin:14px 0 8px"><input id="dayLunch" type="checkbox"> Took 30-minute lunch</label>
+<label class="checks" style="margin:0 0 12px"><input id="dayChargeLunch" type="checkbox"> Charge missed-lunch pay</label>
+<div class="clock-total"><span>Hours worked</span><strong id="clockTotal">—</strong></div>
+<div class="grid" style="margin-top:12px"><div class="field"><label for="dayOperator">Operator</label><select id="dayOperator" required></select></div><div class="field"><label for="dayClass">Group</label><select id="dayClass" required></select></div></div>
+<div class="line"></div>
+<div class="premium"><label class="checks"><input id="dayMilitary" type="checkbox"> Military base</label><div id="militaryStatus"></div></div>
+<div class="premium"><label class="checks"><input id="dayLattice" type="checkbox"> Lattice boom / jib (+$1)</label></div>
+<div class="premium"><label class="checks"><input id="dayWWIW" type="checkbox"> WWIW — ironworkers</label><div class="tiny" id="wwiwRule" hidden style="margin:7px 0 0 31px">Mon–Fri: double after 10 hrs · Sat: double after 8 hrs · Sun: double all day</div></div>
+<div class="premium"><label class="checks"><input id="dayBoom" type="checkbox"> Boom pay</label><div id="boomDetail" hidden class="detail"><div class="grid" style="margin-top:10px"><div class="field"><label for="dayBoomFeet">Boom length incl. jib (ft)</label><input id="dayBoomFeet" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Feet"></div><div class="field" id="boomTierField" hidden><label for="dayBoomTier">Boom rate</label><select id="dayBoomTier"></select></div><div class="field"><label for="dayBoomHours">Boom hours (optional)</label><input id="dayBoomHours" type="number" min="0" step="0.5" placeholder="All hours"></div></div></div><div id="boomStatus"></div></div>
+<div class="field optional-fields"><label for="dayNotes">Job / note (optional)</label><input id="dayNotes" class="noteshort" placeholder="Job site or crane"></div>
+<details class="extra"><summary>Older entry without clock times</summary><div class="field"><label for="dayActualHours">Manual hours</label><input id="dayActualHours" type="number" step="any" min="0" max="24" inputmode="decimal" placeholder="Only for older entries"></div></details>
+<details class="extra"><summary>Pay details (optional)</summary><label class="checks" style="margin-bottom:10px"><input id="dayManualSplit" type="checkbox"> Override automatic REG / OT / DT / TT</label>
+<div class="field"><label for="dayRate">Hourly rate ($)</label><input id="dayRate" type="number" min="0" step="0.001" inputmode="decimal" placeholder="Unknown"></div><div class="grid four" style="margin-top:10px"><div class="field"><label for="hREG">Regular</label><input id="hREG" type="number" min="0" max="24" step="0.25" value="0"></div><div class="field"><label for="hOT">Overtime</label><input id="hOT" type="number" min="0" max="24" step="0.25" value="0"></div><div class="field"><label for="hDT">Double</label><input id="hDT" type="number" min="0" max="24" step="0.25" value="0"></div><div class="field"><label for="hTT">Triple</label><input id="hTT" type="number" min="0" max="24" step="0.25" value="0"></div></div><div class="preview"><div><strong id="dayPreview">Pending</strong><div id="dayPreviewText"></div></div></div></details>
+<div id="dayWarnings" hidden></div>
+<button type="submit" class="button main-save" id="saveDay">Save day</button><button type="button" class="button secondary small" style="margin-top:8px" id="cancelDay" hidden>Cancel</button>
+</form>
+<div class="sectiontop"><h3>Saved days</h3><button class="button secondary small" id="dayToWeek">View week →</button></div><div class="card" id="recentDays"></div>
+</section>
+<section class="pane" id="pane-week">
+<div class="sectiontop"><h2>Pay week</h2><div class="field"><label for="weekOperator">Operator</label><select id="weekOperator"></select></div></div>
+<div class="weekbar"><button class="button secondary small" id="prevWeek">← Previous</button><div class="center" id="weekLabel"></div><button class="button secondary small" id="nextWeek">Next →</button></div>
+<div class="report-action"><button id="emailWeekReport" type="button" class="button email-report-button"><span class="report-ico" aria-hidden="true">✉</span> Email / Print Weekly Report</button><p>A printable PDF with each day’s times, pay rates, and weekly totals.</p></div>
+<div class="card" style="border:2px solid #111;margin:12px 0"><button type="button" id="comparePaycheck" class="button wide" style="font-weight:800;font-size:17px">Compare Paycheck — Estimated Bragg Stub</button><p class="tiny">Creates a pay-stub-style estimate from your saved workdays for this week. Does not change your timecards.</p><div id="expectedStubPanel" hidden style="margin-top:14px"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><strong>CRANE PAY · ESTIMATED EARNINGS</strong><button type="button" class="button secondary small" id="closeExpectedStub">Close</button></div><div id="expectedStubContent"></div></div></div>
+<div class="statrow"><div class="stat"><div class="label">Logged</div><div class="num" id="weekHours">0</div></div><div class="stat"><div class="label">Stub hours</div><div class="num" id="weekPaidHours">—</div></div><div class="stat"><div class="label">Difference</div><div class="num" id="weekDifference">—</div></div></div>
+<div class="card"><h3>Daily log</h3><div id="weekDays"></div></div>
+<div class="card"><div class="grid" style="align-items:end"><div class="field"><label for="stubHoursInput">Hours on paycheck</label><input id="stubHoursInput" type="number" step="0.25" min="0" placeholder="Enter total"></div><div><button id="savePaidHours" type="button" class="button secondary wide">Save</button></div></div></div>
+
+<details class="extra"><summary>Paycheck comparison</summary><div class="hour-audit" id="hourAudit"></div><div id="weekWarnings" hidden></div><div class="statrow paycheck-metrics"><div class="stat"><div class="label">Calculated hourly</div><div class="num" id="weekExpected">—</div></div><div class="stat"><div class="label">Stub hourly</div><div class="num" id="weekActual">—</div></div><div class="stat"><div class="label">Stub gross</div><div class="num" id="weekGross">—</div></div></div><div class="tablewrap"><table class="table"><thead><tr><th>Type</th><th>Logged</th><th>Stub</th><th>Expected $</th><th>Stub $</th><th>Difference</th></tr></thead><tbody id="comparisonBody"></tbody></table></div><div id="rateAuditPanel" class="hour-audit" style="margin-top:14px"></div><div class="week-pay-heading"><h3>Pay rates by day</h3><p>Each day has its own subtotal and bold separator. Subsistence is separate from hourly wages and adds no hours.</p></div><div class="tablewrap daily-pay-wrap"><table class="table daily-pay-table" aria-label="Pay rates separated by workday"><thead><tr><th>Day</th><th>Type</th><th>Rate</th><th>Hrs</th><th>Pay</th></tr></thead><tbody id="expectedLines"></tbody></table></div></details>
+</section>
+<section class="pane" id="pane-stub">
+<div class="sectiontop"><h2>Pay stub</h2><div class="field"><label for="stubOperator">Operator</label><select id="stubOperator"></select></div></div>
+<div class="card"><div class="grid"><div class="field"><label for="stubWeekStart">Week starting</label><input id="stubWeekStart" type="date"></div><div class="field"><label for="stubCheckDate">Check date</label><input id="stubCheckDate" type="date"></div></div><h3 style="margin-top:18px">Earnings lines</h3><div id="stubLines"></div><button class="button small secondary" id="addStubLine">+ Add line</button><div class="grid three" style="margin-top:15px"><div class="field"><label for="stubGross">Gross pay</label><input id="stubGross" type="number" min="0" step="0.01"></div><div class="field"><label for="stubDeductions">Deductions</label><input id="stubDeductions" type="number" min="0" step="0.01"></div><div class="field"><label for="stubNet">Net pay</label><input id="stubNet" type="number" min="0" step="0.01"></div></div><div class="callout" id="stubMath" hidden></div><div class="buttons" style="margin-top:15px"><button class="button" id="saveStub">Save stub</button><button class="button secondary small" id="clearStub">Clear</button></div></div>
+
+</section>
+<section class="pane" id="pane-rates">
+<h2>Settings</h2>
+<div class="card"><h3>Operators</h3><div id="operatorRows"></div><div class="grid"><div class="field"><label for="newOperatorName">New operator</label><input id="newOperatorName" placeholder="Name"></div><div class="field"><label for="newOperatorClass">Group</label><select id="newOperatorClass"></select></div></div><button class="button secondary small" style="margin-top:10px" id="addOperator">+ Add operator</button></div>
+<div class="card"><h3>Group hourly rates</h3><div class="tiny" style="margin-bottom:10px">Current Group 7 base is $69.66/hr including the 2026 union wage adjustment. Lattice is a separate +$1/hr premium only when selected.</div><div class="classcompact" style="font-weight:700;font-size:12px;margin-bottom:5px"><span>Group</span><span style="text-align:right">Rate per hour</span></div><div id="classRows"></div><details class="extra"><summary>Other classifications</summary><div class="grid"><div class="field"><label for="newClassName">Name</label><input id="newClassName"></div><div class="field"><label for="newClassRate">Hourly rate</label><input id="newClassRate" type="number" min="0" step="0.001"></div></div><button class="button secondary small" id="addClass">+ Add</button></details></div>
+<details class="extra"><summary>Overtime & premiums</summary><div class="card"><div class="grid three"><div class="field"><label for="multOT">OT ×</label><input id="multOT" type="number" min="1" step="0.1"></div><div class="field"><label for="multDT">Double ×</label><input id="multDT" type="number" min="1" step="0.1"></div><div class="field"><label for="multTT">Triple ×</label><input id="multTT" type="number" min="1" step="0.1"></div></div><div class="grid" style="margin-top:12px"><div class="field"><label for="militaryAdder">Military base extra / hr</label><input id="militaryAdder" type="number" min="0" step="0.001" placeholder="Unknown"></div><div class="field"><label for="premiumFormula">Premium calculation</label><select id="premiumFormula"><option value="before">Add then multiply</option><option value="after">Multiply then add</option></select></div></div><div class="grid" style="margin-top:12px"><div class="field"><label for="regularStart">Regular work starts</label><select id="regularStart"><option value="06:00">6 AM (contract)</option></select></div><div class="field"><label for="regularEnd">Regular work ends</label><input id="regularEnd" type="text" inputmode="numeric" placeholder="1700" maxlength="4"></div></div><h3 style="margin-top:18px">Boom pay (contract)</h3><div class="tiny">80–100 ft: +$0.75/hr; each additional 20 ft or part: +$0.75/hr. Does not apply during yard travel/curfew.</div><div class="legacy-tier-editor" hidden><div id="boomTierRows"></div><div class="grid three"><div class="field"><label for="tierName">Name</label><input id="tierName"></div><div class="field"><label for="tierMin">From ft</label><input id="tierMin" type="number" min="0" step="0.1"></div><div class="field"><label for="tierMax">To ft</label><input id="tierMax" type="number" min="0" step="0.1"></div><div class="field"><label for="tierAmount">Extra / hr</label><input id="tierAmount" type="number" min="0" step="0.001"></div></div><button class="button secondary small" style="margin-top:10px" id="addTier">+ Add boom rate</button></div></div></details>
+<details class="extra"><summary>Pay week & backup</summary><div class="card"><div class="field"><label for="weekStartDay">Week starts</label><select id="weekStartDay"><option value="1">Monday</option><option value="0">Sunday</option><option value="6">Saturday</option></select></div><div class="buttons" style="margin-top:14px"><button class="button secondary small" id="backupButton">Backup</button><button class="button secondary small" id="restoreButton">Restore</button><button class="button secondary small" id="csvButton">Export CSV</button><button class="button danger small" id="resetAllData" type="button">Erase all data</button><input id="restoreFile" type="file" accept=".json,application/json" hidden></div><div class="tiny" style="margin-top:8px">Records stay on this device/browser. Make backups to keep them safe.</div></div></details>
+</section><div class="foot" id="storageFoot">Saved in this browser</div></main><div id="toast" class="toast"></div>
+<script src="timeline.js"></script><script src="record-integrity.js"></script><script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id), ALL=['REG','OT','DT','TT']; const KEY='crane_checker_fresh_v4';
+const rateExample=[['REG',19.5,69.66,1358.37],['REG',3,71.16,213.48],['REG',5,71.91,359.55],['REG',4.5,74.16,333.72],['REG',4,75.16,300.64],['DT',6.5,139.32,905.58],['DT',1.5,143.82,215.73],['OT',.5,104.49,52.25],['OT',4,106.74,426.96],['OT',2,107.865,215.73],['VAC',null,null,174.26]];
+const newId=()=>String(Date.now())+'-'+Math.random().toString(36).slice(2,9);
+// Standard hourly union base wages; July 2026 adds $1/hr to each 2025 wage group.
+// Lattice is a distinct optional premium and is never bundled into these rates.
+const PRE_2026_GROUP_RATES=[66.03,66.18,67.87,67.99,68.16,68.41,68.66,69.16,71.16];
+const GROUP_RATES_2026=[67.03,67.18,68.87,68.99,69.16,69.41,69.66,70.16,72.16];
+const newData=()=>({settings:{multOT:1.5,multDT:2,multTT:3,militaryAdder:10,premiumFormula:'before',regularStart:'06:00',regularEnd:'17:00',weekStartDay:1},classes:GROUP_RATES_2026.map((rate,i)=>({id:'group-'+(i+1),name:'Group '+(i+1),rate})),operators:[{id:'operator-initial',name:'Me',classId:'group-7',observedGroup:'contract-default',observedRate:0}],days:[],stubs:[],tiers:[],activeOperator:'operator-initial'});
+let data;let persistent=true;let editingId=null;let stubEditingId=null;let stubWorking=[];let currentWeek='';let toastTimer;
+const num=x=>{const n=Number(x);return Number.isFinite(n)?n:0};const round=x=>Math.round((x+Number.EPSILON)*100)/100;const money=x=>'$'+num(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});const rateFmt=x=>'$'+num(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:3});const hFmt=x=>num(x).toFixed(2).replace(/\.00$/,'');const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function localToday(){const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function parseDate(iso){return new Date(iso+'T12:00:00')}function dateISO(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function shiftDate(iso,delta){const d=parseDate(iso);d.setDate(d.getDate()+delta);return dateISO(d)}
+function weekOf(date){const d=parseDate(date);const off=(d.getDay()-num(data.settings.weekStartDay)+7)%7;d.setDate(d.getDate()-off);return dateISO(d)}
+function shortDate(s){return parseDate(s).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}function dayTitle(s){return parseDate(s).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
+function getClass(id){return data.classes.find(x=>x.id===id)}function getOperator(id){return data.operators.find(x=>x.id===id)}
+function active(){return getOperator(data.activeOperator)||data.operators[0]}function getOperatorId(){return active()?.id||''}
+function notify(msg){$('toast').textContent=msg;$('toast').style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').style.display='none',3200)}
+function load(){
+ try {const saved=(window.CraneStorage && typeof window.CraneStorage.read==='function') ? window.CraneStorage.read() : localStorage.getItem(KEY);data=saved?JSON.parse(saved):newData();
+ if(!data||!Array.isArray(data.days)||!Array.isArray(data.classes)||!Array.isArray(data.operators)||!Array.isArray(data.stubs)||!Array.isArray(data.tiers)||!data.settings)throw Error('Invalid data');
+ const published=GROUP_RATES_2026;
+ const oldInitial=data.classes.find(c=>c.id==='class-initial');
+ const extras=data.classes.filter(c=>!/^group-[1-9]$/.test(c.id)&&c.id!=='class-initial');
+ data.classes=[...published.map((rate,i)=>{const id='group-'+(i+1);const old=data.classes.find(c=>c.id===id);return old&&num(old.rate)>0?old:{id,name:'Group '+(i+1),rate}}),...extras];
+ if(oldInitial){for(const op of data.operators){if(op.classId==='class-initial'){op.classId='group-7';if(!op.observedRate&&oldInitial.rate>0)op.observedRate=oldInitial.rate;op.observedGroup='group-7';}}for(const d of data.days)if(d.classId==='class-initial')d.classId='group-7';}
+ // Idempotent 2026 contract-rate migration. Only upgrade exact original 2025
+ // wage group defaults; never overwrite negotiated/custom rates or old paychecks.
+ for(let i=0;i<published.length;i++){
+   const c=data.classes.find(item=>item.id==='group-'+(i+1));
+   if(c&&Math.abs(num(c.rate)-PRE_2026_GROUP_RATES[i])<0.00001)c.rate=published[i];
+ }
+ for(const op of data.operators){
+   const m=/^group-([1-9])$/.exec(op.observedGroup||'');
+   if(m){
+     const i=Number(m[1])-1,r=num(op.observedRate);
+     if(Math.abs(r-PRE_2026_GROUP_RATES[i])<0.00001||Math.abs(r-published[i])<0.00001){
+       op.observedGroup='contract-default';op.observedRate=0;
+     }
+   }
+ }
+ for(const d of data.days){
+   const m=/^group-([1-9])$/.exec(d.classId||'');
+   if(m&&typeof d.date==='string'&&d.date>='2026-07-01'&&d.baseRate!=null){
+     const i=Number(m[1])-1;
+     if(Math.abs(num(d.baseRate)-PRE_2026_GROUP_RATES[i])<0.00001)d.baseRate=published[i];
+   }
+ }
+ const first=data.operators.find(o=>o.id==='operator-initial');
+ if(first&&first.name==='Operator 1 (you)')first.name='Me';
+ if(first&&!first.observedGroup)first.observedGroup='contract-default';
+ if(data.settings.militaryAdder==null)data.settings.militaryAdder=10;
+ data.settings.regularStart='06:00';
+ if(!data.settings.regularEnd)data.settings.regularEnd='17:00';
+ if(window.CranePayIntegrity)window.CranePayIntegrity.repair(data);
+ }catch(e){data=newData();persistent=false}save()
+}
+function save(){try{if(window.CranePayIntegrity)window.CranePayIntegrity.repair(data);const json=JSON.stringify(data);if(window.CraneStorage && typeof window.CraneStorage.write==='function'){if(window.CraneStorage.write(json)!==true)throw Error('Phone storage failed');}else localStorage.setItem(KEY,json);persistent=true;return true;}catch(e){persistent=false;$('storageWarning').hidden=false;return false}}
+function setTab(tab){if(tab==='day'&&window.CranePayFlow){window.CranePayFlow.show();return}document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('active',p.id==='pane-'+tab));document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===tab)));if(tab==='day')renderDayList();if(tab==='week')renderWeek();if(tab==='stub')renderStub();if(tab==='rates')renderRates();window.scrollTo({top:0,behavior:'instant'})}
+function optionList(list,selected){return list.map(x=>`<option value="${esc(x.id)}" ${x.id===selected?'selected':''}>${esc(x.label||x.name)}</option>`).join('')}
+function renderSelects(){const op=active(),oid=op?.id||'';
+ const ops=data.operators.map(o=>({id:o.id,name:o.name}));
+ for(const id of ['dayOperator','weekOperator','stubOperator']){$(id).innerHTML=optionList(ops,oid);$(id).value=oid;}
+ const cls=data.classes.map(c=>({id:c.id,name:c.name+(c.rate>0?' · '+rateFmt(c.rate)+'/hr':'')}));
+ $('dayClass').innerHTML=optionList(cls,op?.classId);
+ $('newOperatorClass').innerHTML=optionList(cls,op?.classId);
+}
+
+function rateFor(op,classId,date){
+ const m=/^group-([1-9])$/.exec(classId||'');
+ const observed=op?.observedGroup===classId?num(op.observedRate):0;
+ if(m&&date&&date<'2026-07-01'){
+   const i=Number(m[1])-1;
+   if(!observed||Math.abs(observed-GROUP_RATES_2026[i])<0.00001||Math.abs(observed-PRE_2026_GROUP_RATES[i])<0.00001)
+     return PRE_2026_GROUP_RATES[i];
+ }
+ return observed>0?observed:(getClass(classId)?.rate||0);
+}
+function resetDay(){editingId=null;$('dayTitle').textContent='Add workday';$('saveDay').textContent='Save day';$('cancelDay').hidden=true;
+ $('dayDate').value=localToday();const op=active();$('dayOperator').value=op?.id||'';$('dayClass').value=op?.classId||'group-7';$('dayRate').value=rateFor(op,$('dayClass').value,$('dayDate').value)||'';
+ ALL.forEach(t=>$('h'+t).value='0');$('dayActualHours').value='';$('dayActualHours').readOnly=false;
+ $('startTime').value='';$('endTime').value='';$('startPeriod').value='AM';$('endPeriod').value='PM';$('dayLunch').checked=false;$('dayChargeLunch').checked=false;$('dayManualSplit').checked=false;$('clockTotal').textContent='—';
+ $('dayMilitary').checked=false;$('dayLattice').checked=false;$('dayWWIW').checked=false;$('dayBoom').checked=false;$('dayBoomFeet').value='';$('dayBoomHours').value='';$('dayNotes').value='';renderBoomChoices();updateDayPreview();renderMini()}
+function actualHours(d){return d.loggedHours!==undefined&&d.loggedHours!==null?num(d.loggedHours):ALL.reduce((a,t)=>a+num(d.hours?.[t]),0)}
+function renderMini(){const date=$('dayDate').value||localToday(),week=weekOf(date),days=data.days.filter(d=>d.operatorId===getOperatorId()&&weekOf(d.date)===week);const h=round(days.reduce((a,d)=>a+actualHours(d),0));const saved=new Set(days.map(d=>d.date)).size;const stub=data.stubs.find(x=>x.operatorId===getOperatorId()&&x.week===week);const paid=stub?actualTotals(stub).byType:null;const hasPaidLines=!!stub?.lines?.some(l=>ALL.includes(l.type));const paidHours=stub?.manualHours!==null&&stub?.manualHours!==undefined?stub.manualHours:(hasPaidLines?ALL.reduce((a,t)=>a+paid[t].hours,0):null);$('miniHours').textContent=hFmt(h);$('miniDays').textContent=saved+' / 7';$('miniWeek').textContent=shortDate(week)+' – '+shortDate(shiftDate(week,6));$('miniPaid').textContent=paidHours!==null?hFmt(paidHours):'—';$('miniAudit').textContent=paidHours!==null?(Math.abs(h-paidHours)<.001?'Hours match':hFmt(Math.abs(h-paidHours))+(h>paidHours?' hours fewer on stub':' hours more on stub')):'Enter pay stub later'}
+// Text-only 12-hour HHMM entry, avoiding Android's native time dialog.
+function parseClock(raw,period){
+ const t=String(raw||'').replace(/\s/g,'');
+ if(!/^[0-9]{3,4}$/.test(t))return null;
+ const digits=t.padStart(4,'0'),h=Number(digits.slice(0,2)),m=Number(digits.slice(2));
+ if(m>59||h<1||h>12)return null;
+ const hour=(h%12)+(period==='PM'?12:0);
+ return {minutes:hour*60+m,iso:String(hour).padStart(2,'0')+':'+String(m).padStart(2,'0'),display:digits};
+}
+function decodeClock(iso){
+ if(!/^\d{2}:\d{2}$/.test(iso||''))return {digits:'',period:'AM'};
+ const [h,m]=iso.split(':').map(Number);
+ if(h>23||m>59)return {digits:'',period:'AM'};
+ const h12=h%12||12;
+ return {digits:String(h12).padStart(2,'0')+String(m).padStart(2,'0'),period:h>=12?'PM':'AM'};
+}
+function clockMinutes(){
+ const start=parseClock($('startTime').value,$('startPeriod').value),end=parseClock($('endTime').value,$('endPeriod').value);
+ if(!start||!end)return null;
+ const span=(end.minutes-start.minutes+1440)%1440;
+ const mins=span-($('dayLunch').checked?30:0);
+ return mins>0&&mins<=1440?mins:null;
+}
+function hoursFromClock(){
+ const start=$('startTime').value,end=$('endTime').value,mins=clockMinutes();
+ if(start&&end){
+   $('dayActualHours').readOnly=true;
+   $('dayActualHours').value=mins===null?'':String(Number((mins/60).toFixed(4)));
+   $('clockTotal').textContent=mins===null?'Check times':hFmt(mins/60)+' hrs';
+ }else{
+   $('dayActualHours').readOnly=false;
+   if(start||end)$('dayActualHours').value='';
+   $('clockTotal').textContent=(start||end)?'Enter both times':($('dayActualHours').value?hFmt($('dayActualHours').value)+' hrs (manual)':'—');
+ }
+ updateDayPreview();
+}
+function restoreClock(input,period,value,defaultPeriod){
+ const decoded=decodeClock(value);$(input).value=decoded.digits;$(period).value=value?decoded.period:defaultPeriod;
+}
+function normalizeClockInput(id){
+ const el=$(id),raw=el.value.trim();if(!raw)return;
+ if(/^[0-9]{3}$/.test(raw))el.value='0'+raw;
+}
+
+function boomTierFor(ft){return data.tiers.filter(t=>num(ft)>=num(t.min)&&(t.max===null||num(ft)<=num(t.max)))}
+function renderBoomChoices(selected){const ft=$('dayBoomFeet').value,items=ft!==''?boomTierFor(ft):[];const el=$('dayBoomTier');const wanted=selected!==undefined?selected:el.value;el.innerHTML='<option value="">'+(ft===''?'Select rate':items.length?'Choose bracket':'Rate not set')+'</option>'+optionList(items.map(t=>({id:t.id,name:t.name+' · +'+rateFmt(t.amount)+'/hr'})));if(wanted&&items.some(t=>t.id===wanted))el.value=wanted;else if(items.length===1)el.value=items[0].id;$('boomTierField').hidden=data.tiers.length===0;}
+function fromDay(){const minutes=clockMinutes();return {
+ id:editingId||newId(),operatorId:$('dayOperator').value,classId:$('dayClass').value,date:$('dayDate').value,
+ baseRate:num($('dayRate').value),loggedHours:minutes!==null?minutes/60:($('dayActualHours').value===''?null:num($('dayActualHours').value)),
+ startTime:parseClock($('startTime').value,$('startPeriod').value)?.iso||'',endTime:parseClock($('endTime').value,$('endPeriod').value)?.iso||'',breakMinutes:$('dayLunch').checked?30:0,
+ manualSplit:$('dayManualSplit').checked,hours:Object.fromEntries(ALL.map(t=>[t,num($('h'+t).value)])),
+ chargeLunch:!$('dayLunch').checked&&$('dayChargeLunch').checked,lattice:$('dayLattice').checked,wwiw:$('dayWWIW').checked,military:$('dayMilitary').checked,
+ boom:$('dayBoom').checked,boomFeet:!$('dayBoom').checked||$('dayBoomFeet').value===''?null:num($('dayBoomFeet').value),
+ boomHours:$('dayBoomHours').value===''?null:num($('dayBoomHours').value),boomTierId:null,note:$('dayNotes').value.trim()}}
+// Contract model: ordinary single shift. WWIW changes double-time cutoffs only; all other contract rules remain. Multiple-shift cases may need manual review.
+function isContractHoliday(iso){
+ const y=Number(iso.slice(0,4));
+ function nthWeekday(year,mon,day,n){const x=new Date(year,mon-1,1);return dateISO(new Date(year,mon-1,1+(day-x.getDay()+7)%7+7*(n-1)))}
+ function lastWeekday(year,mon,day){const x=new Date(year,mon,0);return dateISO(new Date(year,mon,x.getDate()-(x.getDay()-day+7)%7))}
+ function obs(year,mon,day,fridayIfSaturday=false){const d=new Date(year,mon-1,day);if(d.getDay()===0)d.setDate(d.getDate()+1);else if(fridayIfSaturday&&d.getDay()===6)d.setDate(d.getDate()-1);return dateISO(d)}
+ for(const yr of [y-1,y,y+1]){
+ const dates=[obs(yr,1,1,true),nthWeekday(yr,2,1,3),lastWeekday(yr,5,1),obs(yr,7,4,false),nthWeekday(yr,9,1,1),obs(yr,11,11,false),nthWeekday(yr,11,4,4),shiftDate(nthWeekday(yr,11,4,4),1),obs(yr,12,25,true)];
+ if(dates.includes(iso))return true;
+ }return false;
+}
+function specialDoubleSaturday(iso){const d=parseDate(iso);const m=d.getMonth()+1;if(![6,12].includes(m)||d.getDay()!==6)return false;const firstFri=new Date(d.getFullYear(),m-1,1);firstFri.setDate(1+(5-firstFri.getDay()+7)%7);return iso===dateISO(new Date(d.getFullYear(),m-1,firstFri.getDate()+1))}
+function weekdayNumber(iso){return parseDate(iso).getDay()}
+function boomExtra(feet){const ft=num(feet);return ft<80?0:Math.round((0.75*(1+Math.max(0,Math.ceil((ft-100-1e-9)/20))))*100)/100}
+function oldManual(d){return d.manualSplit===true||(d.manualSplit===undefined&&ALL.some(t=>num(d.hours?.[t])>0))}
+function automaticSplit(d,priorRegular=0){
+ const out={REG:0,OT:0,DT:0,TT:0};let dayReg=0,paid=0;
+ const wd=weekdayNumber(d.date),holiday=isContractHoliday(d.date),doubleSat=specialDoubleSaturday(d.date);
+ const dtAfter=d.wwiw?(wd===6?480:600):720; // WWIW: Mon–Fri >10 h, Sat >8 h. Sunday is always DT.
+ const start=String(d.startTime||''),end=String(d.endTime||'');
+ const workStart=data.settings.regularStart||'06:00',workEnd=data.settings.regularEnd||'17:00';
+ const sMin=/^\d{2}:\d{2}$/.test(start)?Number(start.slice(0,2))*60+Number(start.slice(3)):null;
+ const eMin=/^\d{2}:\d{2}$/.test(end)?Number(end.slice(0,2))*60+Number(end.slice(3)):null;
+ const begin=Number(workStart.slice(0,2))*60+Number(workStart.slice(3)),finish=Number(workEnd.slice(0,2))*60+Number(workEnd.slice(3));
+ if(sMin!==null&&eMin!==null){
+ const span=(eMin-sMin+1440)%1440,breakM=Math.max(0,num(d.breakMinutes));
+ const lunchStart=Math.floor((span-breakM)/2);
+ for(let i=0;i<span;i++){
+ if(breakM>0&&i>=lunchStart&&i<lunchStart+breakM)continue;
+ const minute=(sMin+i)%1440;const nextDay=sMin+i>=1440;
+ let cat;
+ if(holiday)cat='TT';else if(wd===0||doubleSat||paid>=dtAfter)cat='DT';
+ else if(wd===6||nextDay||minute<begin||minute>=finish||dayReg>=480||priorRegular+dayReg>=2400)cat='OT';
+ else {cat='REG';dayReg++}
+ out[cat]++;paid++;
+ }
+ } else {
+ let minutes=Math.round(actualHours(d)*60);
+ while(minutes-->0){let cat;if(holiday)cat='TT';else if(wd===0||doubleSat||paid>=dtAfter)cat='DT';else if(wd===6||dayReg>=480||priorRegular+dayReg>=2400)cat='OT';else {cat='REG';dayReg++}out[cat]++;paid++;}
+ }
+ for(const t of ALL)out[t]=Math.round(out[t]/60*10000)/10000;
+ return out;
+}
+function effectiveHours(d){if(d.timeline&&window.CranePayTimeline)return window.CranePayTimeline(d,data,{num,round,isContractHoliday,specialDoubleSaturday,previousShortRest,actualHours,effectiveHours,weekOf}).classHours;
+ if(oldManual(d))return Object.fromEntries(ALL.map(t=>[t,num(d.hours?.[t])]));
+ const previous=data.days.filter(x=>x.operatorId===d.operatorId&&x.date<d.date&&weekOf(x.date)===weekOf(d.date)).sort((a,b)=>a.date.localeCompare(b.date));
+ let prevRegular=0;
+ for(const p of previous){const split=oldManual(p)?p.hours:automaticSplit(p,prevRegular);prevRegular+=num(split.REG)*60;}
+ return automaticSplit(d,prevRegular);
+}
+function previousShortRest(d){
+ if(!d.startTime)return false;
+ const previous=data.days.filter(x=>x.operatorId===d.operatorId&&x.date<d.date&&x.endTime).sort((a,b)=>b.date.localeCompare(a.date))[0];
+ if(!previous||!previous.startTime)return false;
+ const prevStart=new Date(previous.date+'T'+previous.startTime),prevEnd=new Date(previous.date+'T'+previous.endTime);if(prevEnd<=prevStart)prevEnd.setDate(prevEnd.getDate()+1);
+ const curStart=new Date(d.date+'T'+d.startTime);return curStart.getTime()>prevEnd.getTime()&&curStart-prevEnd<8*3600000;
+}
+function computeDay(d){if(d.timeline&&window.CranePayTimeline)return window.CranePayTimeline(d,data,{num,round,isContractHoliday,specialDoubleSaturday,previousShortRest,actualHours,effectiveHours,weekOf});
+ const issues=[];const base=num(d.baseRate);const logged=actualHours(d);
+ const hours=effectiveHours(d);let classified=ALL.reduce((sum,t)=>sum+num(hours[t]),0);
+ if(base<=0)issues.push('Hourly rate missing');
+ if(!d.startTime||!d.endTime)issues.push('No clock times: overtime split is estimated');
+ if(previousShortRest(d))issues.push('Under 8 hours rest: contract overtime rule needs review');
+ if(oldManual(d)&&Math.abs(classified-logged)>0.02)issues.push('Manual pay split differs from hours worked');
+ if(d.boom&&d.boomFeet==null)issues.push('Boom length missing');
+ if(d.boom&&d.boomHours!==null&&d.boomHours!==undefined&&num(d.boomHours)>logged+0.001)issues.push('Boom hours exceed worked hours');
+ if(d.lattice&&!(Number(d.classId?.split('-')[1])>=6))issues.push('Lattice premium for oiler/other class needs verification');
+ const military=d.military?num(data.settings.militaryAdder):0;
+ const lattice=d.lattice&&Number(d.classId?.split('-')[1])>=6?1:0;
+ const boom=d.boom?boomExtra(d.boomFeet):0;
+ // If boom was on the whole day, its additional rate is the overtime base as required by Art. IV-B.
+ // Partial boom time is estimated separately at the indicated hours, and flagged.
+ const partialBoom=d.boom&&d.boomHours!==null&&d.boomHours!==undefined&&num(d.boomHours)<logged-0.001;
+ if(partialBoom)issues.push('Partial boom hours: confirm which hours earned boom premium');
+ const adder=military+lattice+(partialBoom?0:boom);
+ const buckets=[];
+ for(const t of ALL){const h=num(hours[t]);if(!h)continue;const mult=t==='REG'?1:num(data.settings['mult'+t]);const rate=data.settings.premiumFormula==='after'?base*mult+adder:(base+adder)*mult;buckets.push({type:t,rate:Math.round(rate*1e6)/1e6,hours:h,amount:round(rate*h)})}
+ if(partialBoom&&boom){const supplement=boom*num(d.boomHours);buckets.push({type:'PREMIUM',rate:boom,hours:0,amount:round(supplement)})}
+ let premiumHours=0;
+ if(d.chargeLunch&&!num(d.breakMinutes)){
+ const wd=weekdayNumber(d.date),hol=isContractHoliday(d.date);const cat=hol?'TT':wd===0||specialDoubleSaturday(d.date)?'DT':wd===6?'OT':'DT';
+ const mult=cat==='TT'?num(data.settings.multTT):cat==='OT'?num(data.settings.multOT):num(data.settings.multDT);
+ // Claimed separately, never added automatically just because lunch wasn't taken.
+ const rate=(base+adder)*mult;premiumHours=0.5;buckets.push({type:cat,rate,hours:0.5,amount:round(rate*0.5)});
+ }
+ // Article III-B: holiday work carries a minimum of eight hours at triple time.
+ let guaranteedHours=0;
+ if(isContractHoliday(d.date)&&logged>0&&classified<8){
+   guaranteedHours=round(8-classified);
+   const rate=data.settings.premiumFormula==='after'?base*num(data.settings.multTT)+adder:(base+adder)*num(data.settings.multTT);
+   buckets.push({type:'TT',rate,hours:guaranteedHours,amount:round(rate*guaranteedHours)});
+ }
+ const payHours=round(classified+premiumHours+guaranteedHours);
+ return {hours:logged,classHours:hours,classifiedHours:payHours,premiumHours,guaranteedHours,buckets,issues,wages:round(buckets.reduce((a,b)=>a+b.amount,0))};
+}
+function previewDay(){const d=fromDay(),calc=computeDay(d);if(!$('dayManualSplit').checked){ALL.forEach(t=>{$('h'+t).value=hFmt(calc.classHours[t]);$('h'+t).readOnly=true});}else ALL.forEach(t=>$('h'+t).readOnly=false);
+ $('dayPreview').textContent=d.baseRate>0&&calc.classifiedHours>0?money(calc.wages):'Pending';
+ $('dayPreviewText').textContent='REG '+hFmt(calc.classHours.REG)+' · OT '+hFmt(calc.classHours.OT)+' · DT '+hFmt(calc.classHours.DT)+' · TT '+hFmt(calc.classHours.TT)+(calc.premiumHours?' · Lunch claim +0.5':'')+(calc.guaranteedHours?' · Holiday minimum +'+hFmt(calc.guaranteedHours):'');
+ $('dayWarnings').hidden=!calc.issues.length;$('dayWarnings').textContent=calc.issues.join('; ');
+ $('wwiwRule').hidden=!$('dayWWIW').checked;
+ $('boomDetail').hidden=!$('dayBoom').checked;
+ $('militaryStatus').textContent=$('dayMilitary').checked?'+$10/hr':'Off';
+ $('boomStatus').textContent=$('dayBoom').checked?(d.boomFeet===null?'Enter boom feet':'+ '+rateFmt(boomExtra(d.boomFeet))+'/hr'):'Off';
+}
+function updateDayPreview(){previewDay()}
+function fillDay(d){if(d.timeline&&window.CranePayFlow){window.CranePayFlow.open(d.date,d.operatorId);return}editingId=d.id;$('dayTitle').textContent='Edit workday';$('saveDay').textContent='Save changes';$('cancelDay').hidden=false;data.activeOperator=d.operatorId;renderSelects();
+ $('dayOperator').value=d.operatorId;$('dayClass').value=d.classId;$('dayRate').value=d.baseRate;$('dayDate').value=d.date;
+ const manual=oldManual(d);$('dayManualSplit').checked=manual;ALL.forEach(t=>$('h'+t).value=num(d.hours?.[t]));
+ $('dayActualHours').value=actualHours(d);restoreClock('startTime','startPeriod',d.startTime,'AM');restoreClock('endTime','endPeriod',d.endTime,'PM');
+ $('dayLunch').checked=num(d.breakMinutes)>0;$('dayChargeLunch').checked=!!d.chargeLunch;
+ $('dayMilitary').checked=!!d.military;$('dayLattice').checked=!!d.lattice;$('dayWWIW').checked=!!d.wwiw;
+ $('dayBoom').checked=d.boom===undefined?(d.boomFeet!==null&&d.boomFeet!==undefined&&d.boomFeet!==''):!!d.boom;
+ $('dayBoomFeet').value=d.boomFeet??'';$('dayBoomHours').value=d.boomHours??'';$('dayNotes').value=d.note||'';
+ renderBoomChoices(d.boomTierId);hoursFromClock();renderMini();setTab('day')}
+function renderDayList(){const days=data.days.filter(d=>d.operatorId===getOperatorId()).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8);$('recentDays').innerHTML=days.length?days.map(d=>{let c=computeDay(d);return `<div class="entry"><div><strong>${esc(dayTitle(d.date))}</strong> <span class="pill">${esc(getClass(d.classId)?.name||'Historical class')}</span><div><small>${hFmt(c.hours)} logged hrs · ${d.startTime?esc(d.startTime)+'–'+esc(d.endTime||'?')+' · ':''}${d.military?'Military base · ':''}${d.lattice?'Lattice · ':''}${d.wwiw?'WWIW · ':''}${d.chargeLunch?'Lunch claim · ':''}${(d.boom||d.boomFeet!==null&&d.boomFeet!==undefined)?'Boom: '+esc(d.boomFeet??'?')+' ft · ':''}${c.issues.length?'Pay pending':''}</small></div><small>${esc(d.note||'')}</small></div><div><div class="amt">${c.classifiedHours?money(c.wages):hFmt(c.hours)+' hrs'}</div><div class="buttons smallgap"><button type="button" class="button small secondary edit-day" data-id="${esc(d.id)}">Edit</button><button type="button" class="button small danger delete-day" data-id="${esc(d.id)}">Delete</button></div></div></div>`}).join(''):'<div class="empty">No saved workdays yet. Your first one will appear here.</div>'}
+
+function aggregate(){const included=data.days.filter(d=>d.operatorId===getOperatorId()&&weekOf(d.date)===currentWeek).sort((a,b)=>a.date.localeCompare(b.date));const totals=Object.fromEntries(ALL.map(t=>[t,{hours:0,amount:0}]));const lines=new Map();const issues=[];for(const d of included){const c=computeDay(d);issues.push(...c.issues.map(w=>dayTitle(d.date)+': '+w));for(const b of c.buckets){if(totals[b.type])totals[b.type].hours+=b.hours;const key=b.type+'|'+b.rate;const prev=lines.get(key)||{type:b.type,rate:b.rate,hours:0,amount:0};prev.hours+=b.hours;lines.set(key,prev)}}for(const line of lines.values())line.amount=round(line.rate*line.hours);for(const t of ALL)totals[t].amount=round([...lines.values()].filter(l=>l.type===t).reduce((sum,l)=>sum+l.amount,0));const classifiedHours=ALL.reduce((v,t)=>v+totals[t].hours,0);const hours=round(included.reduce((v,d)=>v+actualHours(d),0));const wages=round([...lines.values()].reduce((v,line)=>v+line.amount,0));return {days:included,totals,lines:[...lines.values()].sort((a,b)=>ALL.indexOf(a.type)-ALL.indexOf(b.type)||a.rate-b.rate),issues,hours,classifiedHours,wages}}
+
+function renderExpectedPayStub(){
+ const a=aggregate(),stub=currentStub(),actual=stub?actualTotals(stub):null;
+ const subsistence=a.days.reduce((sum,d)=>sum+((d.timeline?.subsistence||d.subsistenceType)==='short'?85:(d.timeline?.subsistence||d.subsistenceType)==='long'?200:0),0);
+ const hourly=a.lines.filter(l=>ALL.includes(l.type));
+ const extras=a.lines.filter(l=>!ALL.includes(l.type));
+ const hourlyTotal=round(hourly.reduce((sum,l)=>sum+l.amount,0));
+ const extraTotal=round(extras.reduce((sum,l)=>sum+l.amount,0));
+ const total=round(hourlyTotal+extraTotal+subsistence);
+ const typeName={REG:'REG',OT:'OT',DT:'DT',TT:'TT'};
+ // Bragg payroll prints regular, double time, then overtime, sorted by rate.
+ const order=['REG','DT','OT','TT'];
+ const ordered=hourly.slice().sort((x,y)=>order.indexOf(x.type)-order.indexOf(y.type)||x.rate-y.rate);
+ const rows=ordered.map(l=>'<tr><td>'+typeName[l.type]+'</td><td style="text-align:right">'+hFmt(l.hours)+'</td><td style="text-align:right">'+rateFmt(l.rate)+'</td><td style="text-align:right">'+money(l.amount)+'</td></tr>').join('');
+ const premiums=extras.map(l=>'<tr><td>Premium</td><td style="text-align:right">—</td><td style="text-align:right">'+rateFmt(l.rate)+'</td><td style="text-align:right">'+money(l.amount)+'</td></tr>').join('');
+ const notices=a.issues.length?'<div style="border-left:4px solid #a65a00;padding:8px;background:#fff4df;margin-top:10px"><b>Review before comparing:</b><br>'+a.issues.map(esc).join('<br>')+'</div>':'';
+ const grossNote='Estimated gross earnings, before taxes and deductions. Subsistence is shown separately and may not be taxable wages. Military/boom premiums may already be included in hourly rates.';
+ $('expectedStubContent').innerHTML='<p><b>Pay week:</b> '+esc(shortDate(currentWeek))+' – '+esc(shortDate(shiftDate(currentWeek,6)))+'</p>'+
+ '<p><b>Operator:</b> '+esc(active()?.name||'')+' · <b>Saved days:</b> '+a.days.length+'</p>'+
+ '<div class="cp-stub-scroll"><table class="cp-stub-table"><thead><tr><th>DESCRIPTION</th><th>HOURS/UNITS</th><th>RATE</th><th>AMOUNT</th></tr></thead><tbody>'+
+ (rows||'<tr><td colspan="4">No calculated workdays for this week.</td></tr>')+premiums+
+
+ (subsistence?'<tr><td>SUB</td><td></td><td></td><td style="text-align:right">'+money(subsistence)+'</td></tr>':'')+
+ '<tr class="cp-stub-total"><td>GROSS PAY</td><td></td><td></td><td style="text-align:right">'+money(total)+'</td></tr></tbody></table></div>'+
+ (actual?'<p><b>Entered pay-stub hourly earnings:</b> '+money(actual.hourly)+' · <b>Difference:</b> '+money(round(hourlyTotal-actual.hourly))+'</p>':'<p class="tiny">No Bragg earnings lines entered yet. Hold this screen next to your pay stub to compare the hours and rates.</p>')+
+ '<p class="tiny">'+grossNote+'</p>'+notices;
+ $('expectedStubPanel').hidden=false;
+}
+function currentStub(){return data.stubs.find(x=>x.operatorId===getOperatorId()&&x.week===currentWeek)}
+function actualTotals(stub){if(!stub)return null;const byType=Object.fromEntries(ALL.map(t=>[t,{hours:0,amount:0}]));let other=0;let hourly=0;for(const l of stub.lines||[]){const amt=stubLineValue(l);if(ALL.includes(l.type)){byType[l.type].hours+=num(l.hours);byType[l.type].amount=round(byType[l.type].amount+amt);hourly=round(hourly+amt)}else other=round(other+amt)}return {byType,hourly,other,lineTotal:round(hourly+other)}}
+function weeklyReportPayload(){
+ if(!currentWeek)currentWeek=weekOf(localToday());
+ const a=aggregate(),stub=currentStub(),paid=stub?actualTotals(stub):null;
+ const subRate=d=>(d.timeline?.subsistence||d.subsistenceType)==='short'?85:(d.timeline?.subsistence||d.subsistenceType)==='long'?200:0;
+ const times=[['yard','Start at yard'],['pickupArrive','Arrive at crane yard'],['craneDepart','Depart crane yard with crane'],['site','Arrive at jobsite'],['setup','Setup complete'],['work','Begin crane work'],['workEnd','Crane work complete'],['breakdown','Breakdown complete'],['craneReturn','Return crane to crane yard'],['pickupDepart','Leave crane yard for home'],['end','Return to yard']];
+ const days=a.days.map(d=>{
+  const c=computeDay(d),t=d.timeline||{},ts=t.times||{},sub=subRate(d);
+  const kind=t.subsistence||d.subsistenceType||'none';
+  const home=(t.homeYard||'home').trim(),pickup=(t.pickupYard||'crane').trim();
+  const routeLabels=t.multiYard?{
+   yard:'Start at '+home+' yard',
+   pickupArrive:'Arrive at '+pickup+' yard',
+   craneDepart:'Depart '+pickup+' yard with crane',
+   site:'Arrive at jobsite with crane',
+   craneReturn:'Return crane to '+pickup+' yard',
+   pickupDepart:'Leave '+pickup+' yard for home',
+   end:'Return to '+home+' yard'
+  }:{};
+  const extraStopKeys=['pickupArrive','craneDepart','craneReturn','pickupDepart'];
+  const checkpoints=times.filter(([key])=>ts[key]&&(t.multiYard||!extraStopKeys.includes(key))).map(([key,label])=>({label:routeLabels[key]||label,time:ts[key]}));
+  const conditions=[];
+  conditions.push('Crew role: '+(t.crewRole==='oiler'?'Oiler':t.crewRole==='third'?'Third man':'Operator'));
+  if(t.yardOnly)conditions.push('Yard work only — no travel; paid hours from crane work start to finish');
+  if(t.multiYard)conditions.push('Multi-yard trip: '+home+' yard → '+pickup+' crane yard → jobsite → '+pickup+' crane yard → '+home+' yard');
+  if(t.base||d.military)conditions.push('Military base premium');
+  if(t.boom||d.boom)conditions.push('Boom '+(Number(t.main||0)+Number(t.jib||0)||d.boomFeet||'?')+' ft');
+  if(t.lattice||d.lattice)conditions.push('Lattice');
+  if(t.wwiw||d.wwiw)conditions.push('Ironworkers (WWIW)');
+  if(t.lunch)conditions.push('30-min lunch taken');
+  if(t.lunchClaim||d.chargeLunch)conditions.push('Missed-lunch pay');
+  const payLines=c.buckets.filter(b=>ALL.includes(b.type)).map(b=>({type:b.type,hours:num(b.hours),rate:num(b.rate),amount:num(b.amount)}));
+  return {date:d.date,label:dayTitle(d.date),start:d.startTime||ts.yard||'',end:d.endTime||ts.end||'',hours:actualHours(d),
+   notes:d.note||'',group:getClass(d.classId)?.name||d.classId||'',checkpoints,conditions,
+   payLines,wages:num(c.wages),subsistenceType:kind,subsistence:sub,total:round(num(c.wages)+sub),issues:c.issues||[]};
+ });
+ const totalSub=round(days.reduce((sum,d)=>sum+d.subsistence,0));
+ const expectedTotal=round(a.wages+totalSub);
+ const hourly=ALL.map(type=>({type,hours:round(a.totals[type].hours),amount:round(a.totals[type].amount)}));
+ const stubLines=(stub?.lines||[]).map(l=>({type:l.type||'',hours:num(l.hours),rate:num(l.rate),amount:round(stubLineValue(l))}));
+ return {
+  reportVersion:'5.4',operator:getOperator(getOperatorId())?.name||'Operator',
+  weekStart:currentWeek,weekEnd:shiftDate(currentWeek,6),
+  generated:new Date().toLocaleString('en-US'),days,hours:round(a.hours),hourly,
+  weeklyWages:round(a.wages),weeklySubsistence:totalSub,expectedTotal,
+  stub:stub?{checkDate:stub.checkDate||'',gross:stub.gross,net:stub.net,manualHours:stub.manualHours,lines:stubLines,hourly:paid?.hourly??null}:null,
+  issues:[...a.issues],note:'Prepared from operator-entered times and Crane Pay calculated estimates. Verify against the governing agreement and payroll records.'
+ };
+}
+function shareWeeklyReport(){
+ const report=weeklyReportPayload();
+ if(!report.days.length){alert('No completed workdays in the selected pay week.');return}
+ if(window.CraneStorage&&typeof window.CraneStorage.emailWeeklyReport==='function'){
+  try{window.CraneStorage.emailWeeklyReport(JSON.stringify(report));}
+  catch(e){alert('Unable to open the email report: '+e.message)}
+ }else{
+  alert('PDF email sharing is available in the Crane Pay Android app.');
+ }
+}
+function renderRateAudit(){
+ const panel=$('rateAuditPanel');if(!panel)return;
+ const a=aggregate(),stub=currentStub(),expected=a.lines.filter(l=>ALL.includes(l.type));
+ const actual=(stub?.lines||[]).filter(l=>ALL.includes(l.type));
+ const key=l=>l.type+'|'+Number(num(l.rate).toFixed(4));
+ const buckets=new Map();
+ for(const l of expected){const k=key(l),v=buckets.get(k)||{type:l.type,rate:num(l.rate),eh:0,ph:0,ea:0,pa:0};v.eh+=num(l.hours);v.ea+=num(l.amount);buckets.set(k,v)}
+ for(const l of actual){const k=key(l),v=buckets.get(k)||{type:l.type,rate:num(l.rate),eh:0,ph:0,ea:0,pa:0};v.ph+=num(l.hours);v.pa+=stubLineValue(l);buckets.set(k,v)}
+ const rows=[...buckets.values()].sort((x,y)=>ALL.indexOf(x.type)-ALL.indexOf(y.type)||x.rate-y.rate);
+ const eHours=round(expected.reduce((n,l)=>n+num(l.hours),0)),pHours=round(actual.reduce((n,l)=>n+num(l.hours),0));
+ const ePay=round(expected.reduce((n,l)=>n+num(l.amount),0)),pPay=round(actual.reduce((n,l)=>n+stubLineValue(l),0));
+ const daily= a.days.map(d=>({date:d.date,calc:computeDay(d)}));
+ const show=rows.map(v=>{
+  const dh=round(v.ph-v.eh),da=round(v.pa-v.ea);
+  const matched=Math.abs(dh)<0.001&&Math.abs(da)<0.02;
+  const days=daily.flatMap(item=>item.calc.buckets.filter(b=>b.type===v.type&&Math.abs(num(b.rate)-v.rate)<0.0001).map(b=>({date:item.date,hours:b.hours,rate:b.rate,amount:b.amount,issues:item.calc.issues})));
+  const dayRows=days.length?days.map(d=>'<tr><td>'+esc(dayTitle(d.date))+'</td><td>'+hFmt(d.hours)+'</td><td>'+money(d.amount)+'</td><td>'+esc(d.issues.join('; ')||'—')+'</td></tr>').join(''):'<tr><td colspan="4">CranePay did not assign this rate on any day.</td></tr>';
+  const alternatives=rows.filter(other=>other.type===v.type&&Math.abs(other.rate-v.rate)>0.0001&&other.ph>other.eh+0.001).map(other=>rateFmt(other.rate)+' (Bragg +'+hFmt(round(other.ph-other.eh))+' h)').join(', ');
+  const detail='<details style="margin:5px 0"><summary style="cursor:pointer"><b>Trace '+esc(v.type)+' '+rateFmt(v.rate)+'</b> · '+(dh>0?'+':'')+hFmt(dh)+' h difference</summary><p class="tiny">These are the days CranePay assigned this exact rate. Bragg’s paycheck gives weekly totals only, so another rate is a possible match, not proof of a transfer.</p><div class="tablewrap"><table class="table"><thead><tr><th>CranePay day</th><th>Hours</th><th>Wages</th><th>Review flags</th></tr></thead><tbody>'+dayRows+'</tbody></table></div>'+(alternatives?'<p class="tiny"><b>Other '+esc(v.type)+' rates with more Bragg hours than CranePay:</b> '+esc(alternatives)+'</p>':'<p class="tiny">No other '+esc(v.type)+' rate has excess Bragg hours in this comparison.</p>')+'</details>';
+  return '<tr><td>'+esc(v.type)+'</td><td>'+rateFmt(v.rate)+'</td><td>'+hFmt(v.eh)+'</td><td>'+hFmt(v.ph)+'</td><td>'+(dh>0?'+':'')+hFmt(dh)+'</td><td>'+money(v.ea)+'</td><td>'+money(v.pa)+'</td><td>'+(da>0?'+':'')+money(da)+'</td></tr>'+(matched?'':'<tr><td colspan="8">'+detail+'</td></tr>');
+ }).join('');
+ panel.innerHTML='<h3>Paycheck audit · exact hourly rates</h3><p>Enter each earnings line on the Pay Stub tab, then save it. Differences below are Bragg minus CranePay. Vacation and subsistence are excluded.</p>'+
+ (!actual.length?'<p><strong>No hourly pay-stub lines saved for this week yet.</strong> Open Pay Stub and enter the printed hours, rate and amount for each REG, OT, DT or TT line.</p>':'<p><strong>Hours:</strong> CranePay '+hFmt(eHours)+' / Stub '+hFmt(pHours)+' (difference '+hFmt(round(pHours-eHours))+'). <strong>Hourly wages:</strong> CranePay '+money(ePay)+' / Stub '+money(pPay)+' (difference '+money(round(pPay-ePay))+').</p>')+
+ '<div class="tablewrap"><table class="table"><thead><tr><th>Type</th><th>Rate</th><th>App h</th><th>Stub h</th><th>Δ h</th><th>App $</th><th>Stub $</th><th>Δ $</th></tr></thead><tbody>'+show+'</tbody></table></div>'+
+ '<p class="tiny">A row with zero on one side means that rate appears only on the other side. Tap Trace under a mismatched rate to see which days CranePay assigned it. This does not establish how Bragg classified those days; a difference is not proof of underpayment.</p>';
+}
+function renderWeek(){if($('expectedStubPanel')&&!$('expectedStubPanel').hidden)renderExpectedPayStub();if(!currentWeek)currentWeek=weekOf(localToday());$('weekLabel').innerHTML=esc(shortDate(currentWeek)+' – '+shortDate(shiftDate(currentWeek,6)))+'<small>Pay period</small>';const a=aggregate(),stub=currentStub(),hasHourlyLines=!!stub?.lines?.some(l=>ALL.includes(l.type)),actual=hasHourlyLines?actualTotals(stub):null;const paidHours=stub?.manualHours!==null&&stub?.manualHours!==undefined?stub.manualHours:(actual?ALL.reduce((s,t)=>s+actual.byType[t].hours,0):null);const difference=paidHours===null?null:round(a.hours-paidHours);$('stubHoursInput').value=paidHours===null?'':String(paidHours);$('weekHours').textContent=hFmt(a.hours);$('weekPaidHours').textContent=paidHours===null?'—':hFmt(paidHours);$('weekDifference').textContent=difference===null?'—':(difference>0?'+':'')+hFmt(difference);$('weekExpected').textContent=a.classifiedHours?money(a.wages):'Pending';$('weekActual').textContent=actual?money(actual.hourly):'—';$('weekGross').textContent=stub&&stub.gross!==null?money(stub.gross):'—';const audit=$('hourAudit');audit.className='hour-audit'+(difference===null?'':Math.abs(difference)<.001?' good':' bad');audit.innerHTML=`<div class="figures"><div><div class="tiny">Logged hours</div><div class="strong">${hFmt(a.hours)}</div></div><div><div class="tiny">Hours on paycheck</div><div class="strong">${paidHours===null?'—':hFmt(paidHours)}</div></div><div><div class="tiny">Hours difference</div><div class="strong ${difference===null?'muted':Math.abs(difference)<.001?'good':'bad'}">${difference===null?'—':(difference>0?'+':'')+hFmt(difference)}</div></div></div><p class="tiny">${difference===null?'Enter the REG, OT, DT and TT earnings lines on the Pay stub tab to compare hours.':Math.abs(difference)<.001?'Total logged hours match the pay stub.':difference>0?'You logged '+hFmt(difference)+' more hour(s) than the stub lists. Which day is different still needs checking against payroll’s daily records.':'The pay stub lists '+hFmt(Math.abs(difference))+' more hour(s) than your log. Check both records.'}</p>`;
+const incomplete=[];const duplicateCopies=(data.duplicateWorkdayArchive||[]).filter(x=>x.operatorId===getOperatorId()&&weekOf(x.date)===currentWeek);if(duplicateCopies.length)incomplete.push(duplicateCopies.length+' duplicate workday record(s) removed from totals and kept in the recovery archive. Review before deleting backups');if(!a.days.length)incomplete.push('No workdays logged for this operator in this week');if(!stub)incomplete.push('No pay stub entered for this week');else if(!hasHourlyLines)incomplete.push('Enter individual hourly earnings lines on the pay stub for a wages comparison');incomplete.push(...a.issues);$('weekWarnings').hidden=!incomplete.length;$('weekWarnings').innerHTML='<strong>'+ (a.issues.length?'Wage comparison needs more information.':'Before comparing wages:') +'</strong> '+incomplete.map(esc).join(' · ')+'.';$('comparisonBody').innerHTML=ALL.map(t=>{const expected=a.totals[t],paid=actual?.byType[t];const delta=paid&&a.days.length&&a.issues.length===0?round(expected.amount-paid.amount):null;return `<tr><td><strong>${t}</strong></td><td>${hFmt(expected.hours)}</td><td>${paid?hFmt(paid.hours):'—'}</td><td>${money(expected.amount)}</td><td>${paid?money(paid.amount):'—'}</td><td class="${delta===null?'muted':delta>0.009?'bad':delta<-.009?'good':''}">${delta===null?'—':(delta>0?'+':'')+money(delta)}</td></tr>`}).join('')+`<tr class="subtotal"><td>Hourly total</td><td>${hFmt(a.classifiedHours)}</td><td>${actual?hFmt(paidHours):'—'}</td><td>${money(a.wages)}</td><td>${actual?money(actual.hourly):'—'}</td><td>${actual&&a.days.length&&!a.issues.length?(a.wages-actual.hourly>0?'+':'')+money(round(a.wages-actual.hourly)):'—'}</td></tr>`;
+function subsistenceKind(d){return d.timeline?.subsistence||d.subsistenceType||'none'}
+function subsistenceRate(d){const kind=subsistenceKind(d);return kind==='short'?85:kind==='long'?200:0}
+const weeklySub=round(a.days.reduce((sum,d)=>sum+subsistenceRate(d),0));
+const payGroups=a.days.map(d=>{
+ const dt=parseDate(d.date),dateLabel=dt.toLocaleDateString('en-US',{weekday:'short'})+' '+(dt.getMonth()+1)+'/'+dt.getDate();
+ const result=computeDay(d),rated=result.buckets.filter(b=>ALL.includes(b.type));
+ const sub=subsistenceRate(d),kind=subsistenceKind(d);
+ const detail=rated.map(l=>'<tr data-paydate="'+esc(d.date)+'"><td class="pay-date">'+esc(dateLabel)+'</td><td><span class="pay-type pay-type-'+esc(l.type.toLowerCase())+'">'+esc(l.type)+'</span></td><td>'+rateFmt(l.rate)+'</td><td>'+hFmt(l.hours)+'</td><td>'+money(l.amount)+'</td></tr>').join('');
+ const subRow=sub?'<tr class="pay-subline" data-paydate="'+esc(d.date)+'"><td class="pay-date">'+esc(dateLabel)+'</td><td colspan="3">Subsistence · '+(kind==='long'?'Long weekend':'Short')+'</td><td>'+money(sub)+'</td></tr>':'';
+ const total=round(result.wages+sub);
+ const payHours=round(rated.reduce((sum,l)=>sum+num(l.hours),0));
+ const subtotal='<tr class="pay-day-total" data-day-total="'+esc(d.date)+'"><td colspan="3">'+esc(dateLabel)+' total</td><td class="pay-day-hours" aria-label="'+esc(dateLabel)+' categorized pay hours">'+hFmt(payHours)+' hrs</td><td>'+money(total)+'</td></tr>';
+ return detail+subRow+subtotal;
+}).join('');
+$('expectedLines').innerHTML=payGroups?payGroups+'<tr class="subtotal pay-week-wages"><td colspan="3">Weekly hourly wages</td><td class="pay-day-hours">'+hFmt(round(a.classifiedHours))+' hrs</td><td>'+money(a.wages)+'</td></tr>'+
+ '<tr class="subtotal pay-week-sub"><td colspan="4">Weekly subsistence</td><td>'+money(weeklySub)+'</td></tr>'+
+ '<tr class="subtotal pay-all-total"><td colspan="4">Total expected (wages + subsistence)</td><td>'+money(round(a.wages+weeklySub))+'</td></tr>':
+ '<tr><td colspan="5" style="text-align:center">No completed workdays this week</td></tr>';
+let running=0;let weeklyHTML='<div class="week-day week-day-heading"><div>Day</div><div style="text-align:right">Hours</div><div style="text-align:right">Running</div><div class="running">Notes</div><div></div></div>';for(let i=0;i<7;i++){const date=shiftDate(currentWeek,i),dayEntries=a.days.filter(d=>d.date===date),hrs=round(dayEntries.reduce((sum,d)=>sum+actualHours(d),0));running=round(running+hrs);weeklyHTML+=`<div class="week-day ${dayEntries.length?'':'unlogged'}"><div><div class="day-label">${esc(dayTitle(date))}</div><div class="tiny">${dayEntries.length?'Saved':'Not entered'}</div></div><div class="num">${dayEntries.length?hFmt(hrs):'—'}</div><div class="num">${hFmt(running)}</div><div class="running tiny">${esc(dayEntries.map(d=>d.note).filter(Boolean).join(' · ').slice(0,70))}</div><div>${dayEntries.length?dayEntries.map(d=>`<button class="button small secondary edit-day" data-id="${esc(d.id)}">Edit</button>`).join(' '):`<button class="button small secondary add-on-date" data-date="${esc(date)}">Add</button>`}</div></div>`}weeklyHTML+=`<div class="week-day week-day-total"><div>Total</div><div class="num">${hFmt(a.hours)}</div><div class="num">${hFmt(a.hours)}</div><div class="running"></div><div></div></div>`;$('weekDays').innerHTML=weeklyHTML;renderMini();renderRateAudit()}
+
+function stubLineValue(l){if(l.amount!==null&&l.amount!==undefined&&l.amount!=='')return round(num(l.amount));return round(num(l.hours)*num(l.rate))}
+function defaultStub(){return {id:newId(),operatorId:getOperatorId(),week:currentWeek,checkDate:'',gross:null,deductions:null,net:null,lines:[]}}
+function blankLine(){return {id:newId(),type:'REG',hours:null,rate:null,amount:null}}
+function refStub(){return {id:newId(),operatorId:getOperatorId(),week:'2026-10-05',checkDate:'2026-10-16',gross:4556.27,deductions:1606,net:2950.27,lines:rateExample.map(([type,hours,rate,amount])=>({id:newId(),type,hours,rate,amount}))}}
+function fillStub(){const existing=currentStub();stubEditingId=existing?.id||null;const s=existing||defaultStub();$('stubWeekStart').value=s.week;$('stubCheckDate').value=s.checkDate||'';$('stubGross').value=s.gross??'';$('stubDeductions').value=s.deductions??'';$('stubNet').value=s.net??'';stubWorking=(s.lines||[]).map(l=>({...l}));renderStubLines()}
+function renderStub(){if(!currentWeek)currentWeek=weekOf(localToday());$('stubOperator').value=getOperatorId();fillStub();renderReference()}
+function renderStubLines(){const lines=$('stubLines');lines.innerHTML=stubWorking.length?stubWorking.map((l,i)=>`<div class="stubline" data-id="${esc(l.id)}"><div><label>Type</label><select data-field="type"><option ${l.type==='REG'?'selected':''}>REG</option><option ${l.type==='OT'?'selected':''}>OT</option><option ${l.type==='DT'?'selected':''}>DT</option><option ${l.type==='TT'?'selected':''}>TT</option><option ${l.type==='VAC'?'selected':''}>VAC</option><option ${l.type==='BOOTS'?'selected':''}>BOOTS</option><option ${l.type==='PHONE'?'selected':''}>PHONE</option><option ${l.type==='SUB'?'selected':''}>SUB</option><option ${l.type==='OTHER'?'selected':''}>OTHER</option></select></div><div><label>Hours</label><input type="number" step="0.25" min="0" data-field="hours" value="${esc(l.hours??'')}" placeholder="optional"></div><div><label>Rate ($)</label><input type="number" step="0.001" min="0" data-field="rate" value="${esc(l.rate??'')}" placeholder="optional"></div><div><label>Amount ($)</label><input type="number" step="0.01" min="0" data-field="amount" value="${esc(l.amount??'')}" placeholder="auto"></div><button type="button" class="button danger small remove-stub">Remove</button></div>`).join(''):'<div class="empty" style="margin-bottom:12px">No earnings lines yet. Tap “Add earnings line.”</div>';computeStubMath()}
+function readStubForm(){return {id:stubEditingId||newId(),operatorId:getOperatorId(),week:$('stubWeekStart').value,checkDate:$('stubCheckDate').value,gross:$('stubGross').value===''?null:num($('stubGross').value),deductions:$('stubDeductions').value===''?null:num($('stubDeductions').value),net:$('stubNet').value===''?null:num($('stubNet').value),manualHours:currentStub()?.manualHours??null,lines:stubWorking.map(l=>({...l}))}}
+function computeStubMath(){const s=readStubForm(),a=actualTotals(s),gross=s.gross;const issues=[];if(gross!==null&&Math.abs(gross-a.lineTotal)>.011)issues.push('Earnings lines total '+money(a.lineTotal)+' vs gross '+money(gross)+' ('+money(round(gross-a.lineTotal))+' difference)');if(gross!==null&&s.deductions!==null&&s.net!==null&&Math.abs(round(gross-s.deductions-s.net))>.011)issues.push('Gross minus deductions does not equal net');$('stubMath').hidden=!(stubWorking.length||issues.length);$('stubMath').className='callout smallgap'+(issues.length?' error':' success');$('stubMath').innerHTML='<strong>Earnings rows:</strong> '+money(a.hourly)+' hourly + '+money(a.other)+' non-hourly = <strong>'+money(a.lineTotal)+'</strong>.'+(issues.length?' <br>'+issues.map(esc).join(' · '):'')}
+function renderReference(){$('referenceLines').innerHTML=rateExample.map(([t,h,r,a])=>`<tr><td>${t}</td><td>${h===null?'—':hFmt(h)}</td><td>${r===null?'—':rateFmt(r)}</td><td>${money(a)}</td></tr>`).join('')}
+function renderRates(){
+ $('multOT').value=data.settings.multOT;$('multDT').value=data.settings.multDT;$('multTT').value=data.settings.multTT;
+ $('militaryAdder').value=data.settings.militaryAdder??10;$('premiumFormula').value=data.settings.premiumFormula;$('weekStartDay').value=data.settings.weekStartDay;
+ $('regularStart').value=data.settings.regularStart||'06:00';$('regularEnd').value=(data.settings.regularEnd||'17:00').replace(':','');
+ $('operatorRows').innerHTML=data.operators.map(o=>`<div class="listrow split"><div><strong>${esc(o.name)}</strong>${o.id===getOperatorId()?' <span class="pill">Current</span>':''}<label class="tiny" for="op-class-${esc(o.id)}">Group</label><select id="op-class-${esc(o.id)}" class="operator-class" data-id="${esc(o.id)}" style="max-width:210px;display:block">${optionList(data.classes.map(c=>({id:c.id,name:c.name})),o.classId)}</select></div><div class="buttons"><button class="button small secondary use-operator" data-id="${esc(o.id)}">Use</button><button class="button small danger delete-operator" data-id="${esc(o.id)}" ${data.operators.length===1?'disabled':''}>Delete</button></div></div>`).join('');
+ $('classRows').innerHTML=data.classes.map(c=>`<div class="listrow classcompact" data-id="${esc(c.id)}"><strong>${esc(c.name)}</strong><input aria-label="${esc(c.name)} hourly rate" class="class-rate" type="number" step="0.001" min="0" placeholder="Unknown" value="${c.rate>0?esc(c.rate):''}"><input class="class-name" hidden value="${esc(c.name)}"><button class="delete-class" hidden disabled></button></div>`).join('');
+ $('boomTierRows').innerHTML=data.tiers.length?data.tiers.map(t=>`<div class="listrow split"><div><strong>${esc(t.name)}</strong><div class="tiny">${hFmt(t.min)}–${t.max===null?'∞':hFmt(t.max)} ft · +${rateFmt(t.amount)}/hr</div></div><button type="button" class="button small secondary delete-tier" data-id="${esc(t.id)}">Remove</button></div>`).join(''):'<div class="muted tiny">Contract boom rates are automatic.</div>';
+}
+function changeActive(id){if(!getOperator(id))return;data.activeOperator=id;save();renderSelects();resetDay();renderDayList();renderWeek();renderStub();renderRates()}
+function bind(){$('comparePaycheck').addEventListener('click',renderExpectedPayStub);$('closeExpectedStub').addEventListener('click',()=>$('expectedStubPanel').hidden=true);$('emailWeekReport').addEventListener('click',shareWeeklyReport);document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
+$('dayOperator').addEventListener('change',e=>changeActive(e.target.value));$('weekOperator').addEventListener('change',e=>changeActive(e.target.value));$('stubOperator').addEventListener('change',e=>changeActive(e.target.value));$('dayClass').addEventListener('change',()=>{$('dayRate').value=rateFor(active(),$('dayClass').value,$('dayDate').value)||'';updateDayPreview()});$('dayForm').addEventListener('input',updateDayPreview);
+$('dayLunch').addEventListener('change',()=>{if($('dayLunch').checked)$('dayChargeLunch').checked=false;updateDayPreview()});
+$('dayChargeLunch').addEventListener('change',()=>{if($('dayChargeLunch').checked)$('dayLunch').checked=false;hoursFromClock()});
+$('regularStart').addEventListener('change',()=>{data.settings.regularStart=$('regularStart').value;save();notify('Start rule updated')});
+$('regularEnd').addEventListener('change',()=>{const v=$('regularEnd').value.replace(/\D/g,'');if(!/^([01][0-9]|2[0-3])[0-5][0-9]$/.test(v))return alert('Use four digits, like 1700');data.settings.regularEnd=v.slice(0,2)+':'+v.slice(2);save();notify('End rule updated')});$('dayForm').addEventListener('change',updateDayPreview);$('dayDate').addEventListener('change',()=>{currentWeek=weekOf($('dayDate').value||localToday());if(!editingId){$('dayRate').value=rateFor(active(),$('dayClass').value,$('dayDate').value)||'';}renderMini();updateDayPreview()});for(const id of ['startTime','endTime','startPeriod','endPeriod','dayLunch']){ $(id).addEventListener('input',hoursFromClock); $(id).addEventListener('change',hoursFromClock); }for(const id of ['startTime','endTime']){$(id).addEventListener('blur',()=>{normalizeClockInput(id);hoursFromClock()});}$('dayActualHours').addEventListener('input',hoursFromClock);$('dayBoomFeet').addEventListener('input',()=>{renderBoomChoices();updateDayPreview()});$('newDay').addEventListener('click',resetDay);$('cancelDay').addEventListener('click',resetDay);$('dayToWeek').addEventListener('click',()=>{currentWeek=weekOf($('dayDate').value||localToday());setTab('week')});
+$('dayForm').addEventListener('submit',e=>{e.preventDefault();const d=fromDay();const c=computeDay(d);if(!d.date||!getOperator(d.operatorId)||!getClass(d.classId))return alert('Choose an operator, classification, and work date.');if(ALL.some(t=>!Number.isFinite(d.hours[t])||d.hours[t]<0)||c.hours>24||c.classifiedHours>24)return alert('Total hours for a single day must be between 0 and 24.');if($('startTime').value||$('endTime').value){if(!$('startTime').value||!$('endTime').value)return alert('Enter both clock-in and clock-out times.');if(!d.startTime||!d.endTime)return alert('Enter four digits for each time, like 0500, then select AM or PM.');if(clockMinutes()===null)return alert('Check the times and lunch deduction.');}else if(!editingId)return alert('Enter clock-in and clock-out times.');if(c.hours<=0)return alert('Enter your clock times or hours.');if(d.boom&&d.boomFeet===null)return alert('Enter the boom length for this day.');const existingIndex=data.days.findIndex(x=>x.operatorId===d.operatorId&&x.date===d.date);let updated=false;if(existingIndex>=0){d.id=data.days[existingIndex].id;data.days[existingIndex]=d;updated=true;}else if(editingId){const i=data.days.findIndex(x=>x.id===editingId);if(i>=0){data.days[i]=d;updated=true;}else data.days.push(d)}else data.days.push(d);currentWeek=weekOf(d.date);const op=getOperator(d.operatorId);if(op){op.classId=d.classId;if(d.baseRate>0 && !getClass(d.classId)?.rate){op.observedRate=d.baseRate;op.observedGroup=d.classId;}}save();resetDay();$('dayDate').value=d.date;renderMini();renderDayList();notify(updated?'Day updated':'Day saved')});
+document.addEventListener('click',e=>{const edit=e.target.closest('.edit-day');if(edit){const d=data.days.find(x=>x.id===edit.dataset.id);if(d)fillDay(d)}const add=e.target.closest('.add-on-date');if(add){if(window.CranePayFlow){window.CranePayFlow.open(add.dataset.date);return}resetDay();$('dayDate').value=add.dataset.date;renderMini();setTab('day')}const del=e.target.closest('.delete-day');if(del){const d=data.days.find(x=>x.id===del.dataset.id);if(d){
+ const count=data.days.filter(x=>x.operatorId===d.operatorId&&x.date===d.date).length;
+ if(confirm('Delete all '+count+' payroll record(s) and the saved timecard for '+dayTitle(d.date)+'? A backup is recommended.')){
+  data.days=data.days.filter(x=>!(x.operatorId===d.operatorId&&x.date===d.date));
+  if(data.guided)delete data.guided[d.operatorId+'|'+d.date];
+  window.CranePayFlow?.invalidate?.(d.date,d.operatorId);
+  if(editingId===d.id)resetDay();
+  save();renderDayList();renderWeek();renderMini();notify('Workday and timecard removed');
+ }
+}}});
+$('savePaidHours').addEventListener('click',()=>{const raw=$('stubHoursInput').value;const h=raw===''?null:Number(raw);if(h!==null&&(!Number.isFinite(h)||h<0||h>168))return alert('Enter a valid hours total.');let s=currentStub();if(!s){s={id:newId(),operatorId:getOperatorId(),week:currentWeek,checkDate:'',gross:null,deductions:null,net:null,lines:[],manualHours:h};data.stubs.push(s)}else{s.manualHours=h;}save();renderWeek();renderMini();notify('Paycheck hours saved');});
+$('prevWeek').addEventListener('click',()=>{currentWeek=shiftDate(currentWeek,-7);renderWeek()});$('nextWeek').addEventListener('click',()=>{currentWeek=shiftDate(currentWeek,7);renderWeek()});
+$('stubWeekStart').addEventListener('change',()=>{currentWeek=$('stubWeekStart').value?weekOf($('stubWeekStart').value):currentWeek;renderStub()});$('stubLines').addEventListener('input',e=>{const parent=e.target.closest('.stubline');if(!parent)return;const line=stubWorking.find(x=>x.id===parent.dataset.id);if(!line)return;const field=e.target.dataset.field;if(!field)return;line[field]=field==='type'?e.target.value:e.target.value===''?null:num(e.target.value);computeStubMath()});$('stubLines').addEventListener('change',e=>{if(e.target.dataset.field==='type')computeStubMath()});$('stubLines').addEventListener('click',e=>{const del=e.target.closest('.remove-stub');if(del){stubWorking=stubWorking.filter(x=>x.id!==del.closest('.stubline').dataset.id);renderStubLines()}});$('addStubLine').addEventListener('click',()=>{stubWorking.push(blankLine());renderStubLines()});for(const id of ['stubGross','stubDeductions','stubNet'])$(id).addEventListener('input',computeStubMath);
+$('saveStub').addEventListener('click',()=>{const s=readStubForm();if(!s.week)return alert('Choose a pay period start date.');if(stubWorking.length===0&&s.gross===null)return alert('Enter earnings lines or a gross pay amount.');const idx=data.stubs.findIndex(x=>x.operatorId===s.operatorId&&x.week===s.week);if(idx>=0)data.stubs[idx]=s;else data.stubs.push(s);stubEditingId=s.id;currentWeek=s.week;save();notify('Pay stub saved.');renderWeek();renderMini()});$('clearStub').addEventListener('click',()=>{if(!confirm('Remove the saved pay stub for this operator and week?'))return;data.stubs=data.stubs.filter(x=>!(x.operatorId===getOperatorId()&&x.week===currentWeek));save();fillStub();renderWeek();renderMini();notify('Pay stub cleared.')});
+$('addOperator').addEventListener('click',()=>{const name=$('newOperatorName').value.trim(),classId=$('newOperatorClass').value;if(!name||!getClass(classId))return alert('Enter a name and choose a classification.');const o={id:newId(),name,classId};data.operators.push(o);$('newOperatorName').value='';data.activeOperator=o.id;save();renderSelects();resetDay();renderRates();renderDayList();notify('Operator added.')});$('addClass').addEventListener('click',()=>{const name=$('newClassName').value.trim(),rateStr=$('newClassRate').value;if(!name||rateStr===''||num(rateStr)<=0)return alert('Enter a classification and its hourly rate.');data.classes.push({id:newId(),name,rate:num(rateStr)});$('newClassName').value='';$('newClassRate').value='';save();renderSelects();renderRates();notify('Classification added.')});$('operatorRows').addEventListener('change',e=>{if(!e.target.classList.contains('operator-class'))return;const op=getOperator(e.target.dataset.id);if(!op||!getClass(e.target.value))return;op.classId=e.target.value;save();renderSelects();resetDay();renderRates();notify('Operator classification updated.')});$('operatorRows').addEventListener('click',e=>{const use=e.target.closest('.use-operator'),del=e.target.closest('.delete-operator');if(use){changeActive(use.dataset.id)}if(del&&data.operators.length>1){const o=getOperator(del.dataset.id);if(!o)return;if(data.days.some(d=>d.operatorId===o.id)||data.stubs.some(s=>s.operatorId===o.id)){alert('This operator has saved workdays or pay stubs. Export a backup before removing records; removal is disabled.');return}if(confirm('Delete operator '+o.name+'?')){data.operators=data.operators.filter(x=>x.id!==o.id);if(data.activeOperator===o.id)data.activeOperator=data.operators[0].id;save();renderSelects();resetDay();renderRates()}}});$('classRows').addEventListener('change',e=>{const container=e.target.closest('.listrow');if(!container)return;const c=getClass(container.dataset.id);if(!c)return;if(e.target.classList.contains('class-name'))c.name=e.target.value.trim()||c.name;if(e.target.classList.contains('class-rate')){c.rate=Math.max(0,num(e.target.value))}save();renderSelects();if(!editingId&&!$('dayActualHours').value){$('dayRate').value=rateFor(active(),$('dayClass').value)||'';}renderRates();notify('Group rate saved')});$('classRows').addEventListener('click',e=>{const b=e.target.closest('.delete-class');if(!b)return;const c=getClass(b.closest('.listrow').dataset.id);if(!c||data.classes.length<=1||data.operators.some(o=>o.classId===c.id))return;if(confirm('Delete classification '+c.name+'?')){data.classes=data.classes.filter(x=>x.id!==c.id);save();renderSelects();renderRates()}});
+for(const id of ['multOT','multDT','multTT'])$(id).addEventListener('change',()=>{if(num($(id).value)<1)return alert('Multiplier must be 1 or greater.');data.settings[id]=num($(id).value);save();notify('Multiplier updated.');});$('militaryAdder').addEventListener('change',()=>{data.settings.militaryAdder=$('militaryAdder').value===''?null:Math.max(0,num($('militaryAdder').value));save();notify('Military pay rule updated.')});$('premiumFormula').addEventListener('change',()=>{data.settings.premiumFormula=$('premiumFormula').value;save();notify('Premium formula updated.')});$('weekStartDay').addEventListener('change',()=>{data.settings.weekStartDay=num($('weekStartDay').value);currentWeek=weekOf(currentWeek);save();notify('Pay-week start changed.')});$('addTier').addEventListener('click',()=>{const name=$('tierName').value.trim(),min=$('tierMin').value,max=$('tierMax').value,amt=$('tierAmount').value;if(!name||min===''||amt===''||num(amt)<0||(max!==''&&num(max)<num(min)))return alert('Enter a boom bracket name, starting feet, optional ending feet, and a pay rate.');data.tiers.push({id:newId(),name,min:num(min),max:max===''?null:num(max),amount:num(amt)});['tierName','tierMin','tierMax','tierAmount'].forEach(id=>$(id).value='');save();renderRates();renderBoomChoices();notify('Boom bracket added.')});$('boomTierRows').addEventListener('click',e=>{const b=e.target.closest('.delete-tier');if(!b)return;const t=data.tiers.find(x=>x.id===b.dataset.id);if(t&&confirm('Remove boom bracket '+t.name+'?')){data.tiers=data.tiers.filter(x=>x.id!==t.id);save();renderRates();renderBoomChoices()}});
+$('resetAllData').addEventListener('click',()=>{if(!confirm('Erase ALL saved workdays, paycheck entries, operators and rates from this version? This cannot be undone.'))return;data=newData();editingId=null;stubEditingId=null;stubWorking=[];currentWeek=weekOf(localToday());save();renderSelects();resetDay();renderDayList();renderWeek();renderRates();notify('Fresh start — all entries cleared')});$('backupButton').addEventListener('click',()=>download('crane-paycheck-backup-'+localToday()+'.json',JSON.stringify({app:'crane-paycheck-checker',version:9,data},null,2),'application/json'));$('csvButton').addEventListener('click',()=>{const cols=['operator','date','classification','base_rate','reg_hours','ot_hours','dt_hours','triple_hours','on_military_base','boom_applies','boom_feet','estimated_hourly_wages','incomplete','notes','logged_hours','clock_in','clock_out','break_minutes','lattice_boom','wwiw','charge_missed_lunch','boom_hours','auto_pay_split'];const rows=[cols.join(',')];for(const d of [...data.days].sort((a,b)=>a.date.localeCompare(b.date))){const c=computeDay(d),op=getOperator(d.operatorId);const vals=[op?.name||'',d.date,getClass(d.classId)?.name||'',d.baseRate,...ALL.map(t=>d.hours[t]||0),d.military?'Yes':'No',d.boom?'Yes':'No',d.boomFeet??'',c.wages,c.issues.join('; '),d.note||'',actualHours(d),d.startTime||'',d.endTime||'',d.breakMinutes||0,d.lattice?'Yes':'No',d.wwiw?'Yes':'No',d.chargeLunch?'Yes':'No',d.boomHours??'',!oldManual(d)?'Yes':'No'];rows.push(vals.map(csvValue).join(','))}download('crane-paycheck-workdays-'+localToday()+'.csv',rows.join('\r\n'),'text/csv;charset=utf-8')});$('restoreButton').addEventListener('click',()=>$('restoreFile').click());$('restoreFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const parsed=JSON.parse(await file.text()),v=parsed.data;if(parsed.app!=='crane-paycheck-checker'||!v||!Array.isArray(v.days)||!Array.isArray(v.operators)||!Array.isArray(v.classes)||!Array.isArray(v.tiers)||!Array.isArray(v.stubs)||!v.settings)throw Error('Wrong backup format');if(!confirm('This will REPLACE all workdays, pay stubs, rates and operators on this device. Continue?'))return;data=v;save();currentWeek=weekOf(localToday());renderSelects();resetDay();renderRates();renderDayList();renderMini();notify('Backup restored.') }catch(err){alert('This is not a valid Crane Paycheck Checker backup.')}finally{e.target.value=''}});
+}
+function csvValue(v){const s=String(v??'');return '"'+(/^[=+@\-\t\r]/.test(s)?"'":"")+s.replace(/"/g,'""')+'"'}
+function download(name,str,type){if(window.CraneStorage && typeof window.CraneStorage.share==='function'){window.CraneStorage.share(name,str,type);return;}const blob=new Blob([str],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+
+window.CranePayAPI={
+ getData:()=>data, save:save, getOperatorId:getOperatorId,
+ getExpectedPaycheckLines:()=>aggregate().lines.filter(l=>ALL.includes(l.type)).map(l=>({type:l.type,rate:l.rate,hours:l.hours,amount:l.amount})),
+ getClass:getClass, getOperator:getOperator, rateFor:rateFor,
+ weekOf:weekOf, localToday:localToday, isHoliday:isContractHoliday,
+ specialDoubleSaturday:specialDoubleSaturday, previousShortRest:previousShortRest,
+ num:num, round:round, actualHours:actualHours, effectiveHours:effectiveHours,
+ computeDay:computeDay, renderWeek:renderWeek, renderMini:renderMini, renderDayList:renderDayList,
+ setTab:setTab, dateISO:dateISO
+};
+
+load();currentWeek=weekOf(localToday());renderSelects();resetDay();renderDayList();renderRates();bind();if(!persistent){$('storageWarning').hidden=false;$('storageFoot').textContent='Backup required: browser storage unavailable';}
+})();
+</script><script src="flow.js"></script><script src="vacation.js"></script><script src="drive-sync.js"></script><script src="stub-scan.js"></script><script>if('serviceWorker' in navigator && location.protocol==='https:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script></body></html>
