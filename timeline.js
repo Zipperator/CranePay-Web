@@ -33,6 +33,7 @@ if(d.timeline.lattice&&crewRole==='operator'&&groupNumber<6)issues.push('Operato
 const prior=data.days.filter(x=>x!==d&&x.operatorId===d.operatorId&&x.date<d.date&&h.weekOf(x.date)===h.weekOf(d.date));
 let priorREG=0;for(const x of prior){if(!x.timeline){const s=h.effectiveHours(x);priorREG+=N(s.REG)*60}}
 const lunchStart=d.timeline.lunch?Math.floor((duration-30)/2):-1;
+// Early overtime does not consume the eight straight-time hours.
 const rows=new Map();let count=0,regular=0;
 function add(type,rate){let key=type+'|'+rate,entry=rows.get(key);if(!entry){entry={type,rate,hours:0,amount:0};rows.set(key,entry)}entry.hours+=1/60;hours[type]+=1/60}
 for(let i=0;i<duration;i++){
@@ -42,7 +43,7 @@ const wwiw=inRange(iron,i),dtCutoff=wwiw?(wd===6?480:600):720;
 let type;
 if(holiday)type='TT';
 else if(wd===0||special||count>=dtCutoff)type='DT';
-else if(wd===6||start+i>=1440||minute<360||minute>=1020||count>=480||priorREG+regular>=2400)type='OT';
+else if(wd===6||start+i>=1440||minute<360||minute>=1020||regular>=480||priorREG+regular>=2400)type='OT';
 else{type='REG';regular++}
 let premium=(inRange(base,i)?10:0)+(inRange(boom,i)?boomPremium:0)+lattice;
 let mult={REG:1,OT:1.5,DT:2,TT:3}[type];
